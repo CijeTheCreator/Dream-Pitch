@@ -11,7 +11,7 @@ class MinuteCountDown(
     private val minuteTextView: TextView,
     private var count: Int,
     private val context: Context?,
-    private val secondCountDown: SecondCountDown
+    val secondCountDown: SecondCountDown
 ): CountDownTimer(length, interval) {
 
     override fun onTick(p0: Long) {
