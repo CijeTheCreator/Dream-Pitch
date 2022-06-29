@@ -22,7 +22,7 @@ class TimerFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val minuteTextView = view.findViewById<TextView>(R.id.minuteTextView)
         val secondTextView = view.findViewById<TextView>(R.id.secondTextView)
-        val secondCountDown = SecondCountDown(60000, 1000, secondTextView, 0)
+        val secondCountDown = SecondCountDown(60000, 1000, secondTextView)
         val minuteCountDown = MinuteCountDown(120000, 60000, minuteTextView, 0, this.context, secondCountDown)
 
         minuteCountDown.start()

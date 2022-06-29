@@ -15,14 +15,20 @@ class MinuteCountDown(
 ): CountDownTimer(length, interval) {
 
     override fun onTick(p0: Long) {
+        if (count >= 10) {
+            minuteTextView.text = count.toString()
+        } else {
+            minuteTextView.text = "0${count.toString()}"
+        }
         count++
-        minuteTextView.text = count.toString()
+        secondCountDown.count = 0
         secondCountDown.cancel()
         secondCountDown.start()
     }
 
     override fun onFinish() {
         Toast.makeText(context, "Finished", Toast.LENGTH_LONG).show()
+        minuteTextView.text = "0${count++.toString()}"
     }
 
 
@@ -32,11 +38,15 @@ class SecondCountDown(
     length: Long,
     interval: Long,
     private val secondTextView: TextView,
-    private var count: Int
 ): CountDownTimer(length, interval) {
 
+    var count: Int = 0
     override fun onTick(p0: Long) {
-        secondTextView.text = count.toString()
+        if (count >= 10) {
+            secondTextView.text = count.toString()
+        } else {
+            secondTextView.text = "0${count.toString()}"
+        }
         count++
 
     }
