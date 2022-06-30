@@ -9,7 +9,7 @@ class MinuteCountDown(
     length: Long,
     interval: Long,
     private val minuteTextView: TextView,
-    private var count: Int,
+    var count: Int,
     private val context: Context?,
     val secondCountDown: SecondCountDown
 ): CountDownTimer(length, interval) {
