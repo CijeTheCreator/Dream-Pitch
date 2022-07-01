@@ -22,4 +22,7 @@ class MainActivity : AppCompatActivity() {
         fm.beginTransaction().replace(R.id.bottom_menu_fragment, bottomMenuFragment).commit()
 
     }
+
+    //Intellij debugging video
+    //Fix the timer error when I get back from the program
 }
