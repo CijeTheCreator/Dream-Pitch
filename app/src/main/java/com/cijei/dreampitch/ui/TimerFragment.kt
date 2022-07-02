@@ -64,9 +64,22 @@ class TimerFragment: Fragment() {
 
         pauseButton.setOnClickListener {
             if (!isPaused) {
-                stopCountDown(view, countdown, tempPauseMinuteData.toString(), tempPauseSecondData.toString())
-                tempPauseSecondData = countdown.secondCountDown.count
-                tempPauseMinuteData = countdown.count
+                tempPauseSecondData = secondTextView.text.toString().toInt()
+                tempPauseMinuteData = minuteTextView.text.toString().toInt()
+                countdown.secondCountDown.cancel()
+                countdown.cancel()
+                if (tempPauseMinuteData < 10) {
+                    minuteTextView.text = "0${tempPauseMinuteData.toString()}"
+                } else {
+                    minuteTextView.text = tempPauseMinuteData.toString()
+                }
+
+                if (tempPauseSecondData < 10) {
+                    secondTextView.text = "0${tempPauseSecondData.toString()}"
+                } else {
+                    secondTextView.text = tempPauseSecondData.toString()
+                }
+
                 isPaused = true
             } else {
                 startCountDown(view, tempPauseMinuteData.toLong(), tempPauseMinuteData, tempPauseSecondData)
