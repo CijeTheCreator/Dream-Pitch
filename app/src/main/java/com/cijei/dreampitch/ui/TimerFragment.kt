@@ -1,6 +1,8 @@
 package com.cijei.dreampitch.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +18,10 @@ class TimerFragment: Fragment() {
     private var tempPauseMinuteData: Int = 0
     private var tempPauseSecondData: Int = 0
     private var isPaused = false
+    private lateinit var minuteCountDown: MinuteCountDown
+    private lateinit var secondCountDown: SecondCountDown
+    private var pause: Boolean = false
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,8 +39,8 @@ class TimerFragment: Fragment() {
         val minutesToMilliSeconds = minutes * 60 * 1000
         val minuteTextView = view.findViewById<TextView>(R.id.minuteTextView)
         val secondTextView = view.findViewById<TextView>(R.id.secondTextView)
-        val secondCountDown = SecondCountDown(60000, 1000, secondTextView)
-        val minuteCountDown = MinuteCountDown(minutesToMilliSeconds, 60000, minuteTextView, 0, this.context, secondCountDown)
+        secondCountDown = SecondCountDown(60000, 1000, secondTextView) as SecondCountDown
+        minuteCountDown = MinuteCountDown(minutesToMilliSeconds, 60000, minuteTextView, 0, this.context, secondCountDown)
         minuteCountDown.count = minutesCount
         minuteCountDown.secondCountDown.count = secondsCount
 
@@ -57,6 +63,7 @@ class TimerFragment: Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun pauseCountDown(view: View, countdown: MinuteCountDown) {
         val pauseButton = view.findViewById<Button>(R.id.pause_button)
         val minuteTextView = view.findViewById<TextView>(R.id.minuteTextView)
@@ -64,10 +71,26 @@ class TimerFragment: Fragment() {
 
         pauseButton.setOnClickListener {
             if (!isPaused) {
-                tempPauseSecondData = secondTextView.text.toString().toInt()
-                tempPauseMinuteData = minuteTextView.text.toString().toInt()
-                countdown.secondCountDown.cancel()
-                countdown.cancel()
+
+                //Logic for ongoing pause timer goes here
+                if (!pause)
+                {
+                    tempPauseSecondData = secondTextView.text.toString().toInt()
+                    tempPauseMinuteData = minuteTextView.text.toString().toInt()
+
+
+                    countdown.secondCountDown.cancel()
+                    countdown.cancel()
+                } else
+                {
+                    tempPauseSecondData = secondTextView.text.toString().toInt()
+                    tempPauseMinuteData = minuteTextView.text.toString().toInt()
+
+                    secondCountDown.cancel()
+                }
+                //Closing tag for logic for ongoing pause timer
+
+
                 if (tempPauseMinuteData < 10) {
                     minuteTextView.text = "0${tempPauseMinuteData.toString()}"
                 } else {
@@ -82,7 +105,12 @@ class TimerFragment: Fragment() {
 
                 isPaused = true
             } else {
-                startCountDown(view, tempPauseMinuteData.toLong(), tempPauseMinuteData, tempPauseSecondData)
+                val newSecondsInterval: Int = 60 - tempPauseSecondData
+                secondCountDown = SecondCountDown((newSecondsInterval * 1000).toLong(), 1000, secondTextView, tempPauseSecondData)
+                secondCountDown.start()
+                isPaused = false
+                pause = true
+
             }
         }
 

@@ -38,9 +38,9 @@ class SecondCountDown(
     length: Long,
     interval: Long,
     private val secondTextView: TextView,
+    var count: Int = 0
 ): CountDownTimer(length, interval) {
 
-    var count: Int = 0
     override fun onTick(p0: Long) {
         if (count >= 10) {
             secondTextView.text = count.toString()
