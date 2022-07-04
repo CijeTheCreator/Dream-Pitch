@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.CountDownTimer
 import android.widget.TextView
 import android.widget.Toast
+import com.cijei.dreampitch.ui.TimerFragment
 
 class MinuteCountDown(
     length: Long,
@@ -11,7 +12,7 @@ class MinuteCountDown(
     private val minuteTextView: TextView,
     var count: Int,
     private val context: Context?,
-    val secondCountDown: SecondCountDown
+    val secondCountDown: SecondCountDown,
 ): CountDownTimer(length, interval) {
 
     override fun onTick(p0: Long) {
@@ -38,7 +39,9 @@ class SecondCountDown(
     length: Long,
     interval: Long,
     private val secondTextView: TextView,
-    var count: Int = 0
+    var count: Int = 0,
+    var minuteCountDown: MinuteCountDown? = null,
+    var pause: Boolean = false
 ): CountDownTimer(length, interval) {
 
     override fun onTick(p0: Long) {
@@ -54,6 +57,10 @@ class SecondCountDown(
     override fun onFinish() {
         secondTextView.text = "00"
         count = 0
+        if (pause) {
+            minuteCountDown?.start()
+
+        }
     }
 
 }

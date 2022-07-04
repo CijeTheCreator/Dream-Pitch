@@ -18,9 +18,10 @@ class TimerFragment: Fragment() {
     private var tempPauseMinuteData: Int = 0
     private var tempPauseSecondData: Int = 0
     private var isPaused = false
-    private lateinit var minuteCountDown: MinuteCountDown
+    lateinit var minuteCountDown: MinuteCountDown
     private lateinit var secondCountDown: SecondCountDown
     private var pause: Boolean = false
+    private var countdownduration: Long = 2
 
 
     override fun onCreateView(
@@ -32,7 +33,7 @@ class TimerFragment: Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        startCountDown(view, 2)
+        startCountDown(view, countdownduration)
     }
 
     private fun startCountDown(view: View, minutes: Long, secondsCount: Int = 0, minutesCount: Int = 0) {
@@ -49,17 +50,23 @@ class TimerFragment: Fragment() {
         pauseCountDown(view, minuteCountDown)
     }
 
-    private fun stopCountDown(view: View, countdown: MinuteCountDown, currentMinutes: String = "00", currentSeconds: String = "00") {
+    private fun stopCountDown(view: View, countdown: MinuteCountDown) {
         val stopButton = view.findViewById<Button>(R.id.stop_button)
         val minuteTextView = view.findViewById<TextView>(R.id.minuteTextView)
         val secondTextView = view.findViewById<TextView>(R.id.secondTextView)
         stopButton.setOnClickListener {
-            countdown.cancel()
-            countdown.secondCountDown.cancel()
-            countdown.count = 0
-            countdown.secondCountDown.count = 0
-            minuteTextView.text = currentMinutes
-            secondTextView.text = currentSeconds
+            if (!pause) {
+                countdown.cancel()
+                countdown.secondCountDown.cancel()
+                countdown.count = 0
+                countdown.secondCountDown.count = 0
+            } else {
+                secondCountDown.cancel()
+                secondCountDown.count = 0
+
+            }
+            minuteTextView.text = "00"
+            secondTextView.text = "00"
         }
     }
 
@@ -81,12 +88,16 @@ class TimerFragment: Fragment() {
 
                     countdown.secondCountDown.cancel()
                     countdown.cancel()
+                    pauseButton.text = "RESUME"
                 } else
                 {
                     tempPauseSecondData = secondTextView.text.toString().toInt()
                     tempPauseMinuteData = minuteTextView.text.toString().toInt()
 
+                    minuteCountDown.cancel()
+                    minuteCountDown.secondCountDown.cancel()
                     secondCountDown.cancel()
+                    pauseButton.text = "RESUME"
                 }
                 //Closing tag for logic for ongoing pause timer
 
@@ -104,13 +115,14 @@ class TimerFragment: Fragment() {
                 }
 
                 isPaused = true
+                pauseButton.text = "PAUSE"
             } else {
                 val newSecondsInterval: Int = 60 - tempPauseSecondData
-                secondCountDown = SecondCountDown((newSecondsInterval * 1000).toLong(), 1000, secondTextView, tempPauseSecondData)
-                secondCountDown.start()
-                isPaused = false
                 pause = true
-
+                isPaused = false
+                minuteCountDown = MinuteCountDown(((countdownduration * 60 * 1000) - ((tempPauseMinuteData + 1) * 60000)).toLong(), 60000, minuteTextView, (tempPauseMinuteData + 1), this.context, secondCountDown)
+                secondCountDown = SecondCountDown((newSecondsInterval * 1000).toLong(), 1000, secondTextView, tempPauseSecondData, minuteCountDown, pause)
+                secondCountDown.start()
             }
         }
 
