@@ -63,6 +63,10 @@ class TimerFragment: Fragment() {
             } else {
                 secondCountDown.cancel()
                 secondCountDown.count = 0
+                minuteCountDown.cancel()
+                minuteCountDown.secondCountDown.cancel()
+                minuteCountDown.count = 0
+                minuteCountDown.secondCountDown.count = 0
 
             }
             minuteTextView.text = "00"
