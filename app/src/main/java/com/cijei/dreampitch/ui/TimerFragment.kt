@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.cijei.dreampitch.R
 import com.cijei.dreampitch.hood.MinuteCountDown
 import com.cijei.dreampitch.hood.SecondCountDown
+import com.cijei.dreampitch.mock.MockPlayers
 
 class TimerFragment: Fragment() {
 
@@ -127,6 +128,8 @@ class TimerFragment: Fragment() {
                 minuteCountDown = MinuteCountDown(((countdownduration * 60 * 1000) - ((tempPauseMinuteData + 1) * 60000)).toLong(), 60000, minuteTextView, (tempPauseMinuteData + 1), this.context, secondCountDown)
                 secondCountDown = SecondCountDown((newSecondsInterval * 1000).toLong(), 1000, secondTextView, tempPauseSecondData, minuteCountDown, pause)
                 secondCountDown.start()
+
+
             }
         }
 
