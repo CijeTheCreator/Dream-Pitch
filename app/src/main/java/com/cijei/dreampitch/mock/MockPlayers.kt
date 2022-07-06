@@ -3,7 +3,7 @@ package com.cijei.dreampitch.mock
 import com.cijei.dreampitch.data.Player
 import com.cijei.dreampitch.data.Set
 
-abstract class MockPlayers {
+class MockPlayers {
     fun getPlayers(): ArrayList<Player> {
         val chibuike = Player("Griezz", "DEF", "ARS")
         val cije = Player("Ceejay", "MID", "LIV")
