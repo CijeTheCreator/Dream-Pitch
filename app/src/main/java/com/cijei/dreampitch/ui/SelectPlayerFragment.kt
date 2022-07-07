@@ -33,4 +33,13 @@ class SelectPlayerFragment: Fragment() {
     //You cannot have an activity in the manifest with an empty intent filter
     //When comparing characters you must use single quotes (using equals)
     //You can use double quotes when comparing with contains
+
+    /*
+    Objectives 07/07/07
+    Find out how to attach onClick listeners to each of the players
+    The onClick listener should be based on the kind that was used in podplay
+    Implement an add player feature
+    Implement the second list, the list for choosing players selected. Should I use the Whatsapp style instead of this tick style.
+    Implement the onClick listener
+     */
 }

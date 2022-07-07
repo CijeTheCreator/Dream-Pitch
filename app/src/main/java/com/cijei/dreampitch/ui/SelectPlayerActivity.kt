@@ -19,6 +19,7 @@ class SelectPlayerActivity : AppCompatActivity() {
     private lateinit var editText: EditText
     private lateinit var players: List<Player>
     private lateinit var adapter: PlayerSearchAdapter
+    private lateinit var selectedPlayers: List<Player>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

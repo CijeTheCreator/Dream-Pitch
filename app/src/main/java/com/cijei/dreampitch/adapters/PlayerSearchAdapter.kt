@@ -10,8 +10,14 @@ import com.cijei.dreampitch.databinding.PlayerItemBinding
 import com.cijei.dreampitch.viewholders.PlayerSearchViewHolder
 
 class PlayerSearchAdapter(
-    private var playerList: List<Player>
+    private var playerList: List<Player>,
+    private var playerListener: PlayerListener
 ): RecyclerView.Adapter<PlayerSearchViewHolder>() {
+
+    interface PlayerListener {
+        fun onSelect(player: Player)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerSearchViewHolder {
         return PlayerSearchViewHolder(PlayerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
@@ -25,7 +31,7 @@ class PlayerSearchAdapter(
         holder.lossTextView.text = player.club
 
         holder.playerNameTextView.setOnClickListener {
-            if (holder.tick.visibility == View.VISIBLE) {
+            if (holder.tick.visibility ==   View.VISIBLE) {
                 holder.tick.visibility = View.INVISIBLE
             } else {
                 holder.tick.visibility = View.VISIBLE

@@ -4,19 +4,26 @@ import com.cijei.dreampitch.data.Player
 import com.cijei.dreampitch.data.Set
 
 class MockPlayers {
+
+    private lateinit var players: ArrayList<Player>
+
     fun getPlayers(): ArrayList<Player> {
         val chibuike = Player("Griezz", "DEF", "ARS")
         val cije = Player("Ceejay", "MID", "LIV")
         val vlad = Player("Vlad", "MID", "MCI")
         val honochie = Player("Onochie", "ATT", "MNU")
-        val players = ArrayList<Player>(4)
+        players = ArrayList<Player>(4)
         players.add(chibuike)
         players.add(cije)
         players.add(honochie)
         players.add(vlad)
 
-
         return players
+    }
+
+    fun addPlayer(name: String, position: String, club: String) {
+        val player = Player(name, position, club)
+        players.add(player)
     }
 
 }

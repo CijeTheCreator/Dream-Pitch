@@ -56,6 +56,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/lossTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/lossTextView"
