@@ -4,13 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cijei.dreampitch.R
 import com.cijei.dreampitch.adapters.PlayerSearchAdapter
 import com.cijei.dreampitch.data.Player
 import com.cijei.dreampitch.databinding.SelectPlayerFragmentBinding
 import com.cijei.dreampitch.mock.MockPlayers
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import org.w3c.dom.Text
 
 class SelectPlayerActivity : AppCompatActivity() {
@@ -19,7 +23,7 @@ class SelectPlayerActivity : AppCompatActivity() {
     private lateinit var editText: EditText
     private lateinit var players: List<Player>
     private lateinit var adapter: PlayerSearchAdapter
-    private lateinit var selectedPlayers: List<Player>
+    private var selectedPlayers: ArrayList<Player> = ArrayList<Player>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,13 +35,36 @@ class SelectPlayerActivity : AppCompatActivity() {
         searchEditText.addTextChangedListener(textWatcher)
 
 
-        players = MockPlayers().getPlayers()
-        adapter = PlayerSearchAdapter(players)
+        val mockPlayers = MockPlayers()
+        players = mockPlayers.getPlayers()
+        adapter = PlayerSearchAdapter(players, selectedPlayers)
         binding.playerSearchRecyclerView.adapter = adapter
         binding.playerSearchRecyclerView.layoutManager = layoutManager
+
+        val floatingActionButton: FloatingActionButton = binding.floatingActionButton
+        floatingActionButton.setOnClickListener {
+            Snackbar.make(it, "Implement this tommorow", Snackbar.LENGTH_LONG).show()
+            //TODO("I don't want to start implementing switching activites yet, maybe tommorow")
+            //Carry these selected players and save them as a set
+            //Switch from this player select activity and enter the set activity
+        }
+
+        val addButton: Button = binding.addButton
+        addButton.setOnClickListener {
+            val editText: EditText = EditText(this)
+            val dialog = AlertDialog.Builder(this).setView(editText).setTitle("Add Player").setMessage("Enter Player Name")
+            dialog.setPositiveButton("Add") { _, _ ->
+                val playerName = editText.text.toString()
+                val player_ = Player(playerName, "DEF", "LIV")
+                mockPlayers.addPlayer(player_.name,player_.position, player_.club)
+                val newPlayerList = players as ArrayList<Player>
+                adapter.setSearchData(newPlayerList)
+            }
+            dialog.create().show()
+        }
     }
 
-    val textWatcher = object: TextWatcher {
+    val textWatcher = object : TextWatcher {
         override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
         }
@@ -54,4 +81,5 @@ class SelectPlayerActivity : AppCompatActivity() {
         }
 
     }
+
 }

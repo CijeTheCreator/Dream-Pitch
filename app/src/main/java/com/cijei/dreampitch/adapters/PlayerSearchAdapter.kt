@@ -11,12 +11,9 @@ import com.cijei.dreampitch.viewholders.PlayerSearchViewHolder
 
 class PlayerSearchAdapter(
     private var playerList: List<Player>,
-    private var playerListener: PlayerListener
+    var selectedPlayers: ArrayList<Player>
 ): RecyclerView.Adapter<PlayerSearchViewHolder>() {
 
-    interface PlayerListener {
-        fun onSelect(player: Player)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerSearchViewHolder {
         return PlayerSearchViewHolder(PlayerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -29,14 +26,26 @@ class PlayerSearchAdapter(
         holder.playerNameTextView.text = player.name
         holder.winsTextView.text = player.position
         holder.lossTextView.text = player.club
-
-        holder.playerNameTextView.setOnClickListener {
-            if (holder.tick.visibility ==   View.VISIBLE) {
-                holder.tick.visibility = View.INVISIBLE
-            } else {
-                holder.tick.visibility = View.VISIBLE
-            }
+        if (selectedPlayers.contains(player)) {
+            holder.tick.visibility = View.VISIBLE
+        } else {
+            holder.tick.visibility = View.INVISIBLE
         }
+
+        
+        holder.player.setOnClickListener {
+          if (selectedPlayers.contains(player)){
+              selectedPlayers.remove(player)
+              holder.tick.visibility = View.INVISIBLE
+              println(selectedPlayers)
+          }else {
+              selectedPlayers.add(player)
+              holder.tick.visibility = View.VISIBLE
+              println(selectedPlayers)
+          }
+
+        }
+
     }
 
     override fun getItemCount(): Int {
