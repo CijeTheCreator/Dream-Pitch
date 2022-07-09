@@ -1,5 +1,6 @@
 package com.cijei.dreampitch.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cijei.dreampitch.R
 import com.cijei.dreampitch.adapters.PlayerSearchAdapter
 import com.cijei.dreampitch.data.Player
+import com.cijei.dreampitch.data.Set
 import com.cijei.dreampitch.databinding.SelectPlayerFragmentBinding
 import com.cijei.dreampitch.mock.MockPlayers
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -43,10 +45,12 @@ class SelectPlayerActivity : AppCompatActivity() {
 
         val floatingActionButton: FloatingActionButton = binding.floatingActionButton
         floatingActionButton.setOnClickListener {
-            Snackbar.make(it, "Implement this tommorow", Snackbar.LENGTH_LONG).show()
-            //TODO("I don't want to start implementing switching activites yet, maybe tommorow")
-            //Carry these selected players and save them as a set
-            //Switch from this player select activity and enter the set activity
+            val set = createSet(selectedPlayers)
+            val i = Intent(this@SelectPlayerActivity, MainActivity::class.java)
+            val bundle = Bundle()
+            bundle.putParcelable("AnyStringorKey", set)
+            i.putExtras(bundle)
+            startActivity(i)
         }
 
         val addButton: Button = binding.addButton
@@ -55,7 +59,10 @@ class SelectPlayerActivity : AppCompatActivity() {
             val dialog = AlertDialog.Builder(this).setView(editText).setTitle("Add Player").setMessage("Enter Player Name")
             dialog.setPositiveButton("Add") { _, _ ->
                 val playerName = editText.text.toString()
-                val player_ = Player(playerName, "DEF", "LIV")
+                val player_ = Player()
+                player_.name = playerName
+                player_.club = "LIV"
+                player_.position = "MID"
                 mockPlayers.addPlayer(player_.name,player_.position, player_.club)
                 val newPlayerList = players as ArrayList<Player>
                 adapter.setSearchData(newPlayerList)
@@ -80,6 +87,16 @@ class SelectPlayerActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    private fun createSet(selectedPlayers: ArrayList<Player>): Set {
+        val newSet = Set()
+        newSet.teamName = "Team $selectedPlayers[0].name"
+        newSet.wins = 0
+        newSet.loss = 0
+        newSet.draws = 0
+        newSet.players = selectedPlayers
+        return newSet
     }
 
 }

@@ -11,6 +11,12 @@
         android:theme="@style/Theme.DreamPitch">
         <activity
             android:name=".ui.SelectPlayerActivity"
+            android:exported="false">
+
+        </activity>
+
+        <activity
+            android:name=".ui.MainActivity"
             android:exported="true">
 
             <intent-filter>
@@ -19,11 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
 
             </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="false">
 
         </activity>
 

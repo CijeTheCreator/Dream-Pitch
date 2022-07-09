@@ -9,6 +9,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var bottomMenuFragment: BottomMenuFragment
     private lateinit var mainTimerFragment: TimerFragment
+    private lateinit var setsFragment: SetsFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,9 +17,11 @@ class MainActivity : AppCompatActivity() {
 
         bottomMenuFragment = BottomMenuFragment()
         mainTimerFragment = TimerFragment()
+        setsFragment = SetsFragment()
 
         val fm: FragmentManager = supportFragmentManager
-        fm.beginTransaction().replace(R.id.timer_fragment, mainTimerFragment).commit()
+        fm.beginTransaction().replace(R.id.timer_fragment, setsFragment).commit()
+//        fm.beginTransaction().replace(R.id.timer_fragment, mainTimerFragment).commit()
         fm.beginTransaction().replace(R.id.bottom_menu_fragment, bottomMenuFragment).commit()
 
     }
