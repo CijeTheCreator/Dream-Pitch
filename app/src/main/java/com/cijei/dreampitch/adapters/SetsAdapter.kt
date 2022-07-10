@@ -8,7 +8,7 @@ import com.cijei.dreampitch.databinding.SetItemBinding
 import com.cijei.dreampitch.viewholders.SetsViewHolder
 import com.google.android.material.snackbar.Snackbar
 
-class SetsAdapter(private val sets: ArrayList<Set>): RecyclerView.Adapter<SetsViewHolder>() {
+class SetsAdapter(private var sets: ArrayList<Set>): RecyclerView.Adapter<SetsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SetsViewHolder {
         return SetsViewHolder(SetItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
@@ -28,5 +28,11 @@ class SetsAdapter(private val sets: ArrayList<Set>): RecyclerView.Adapter<SetsVi
 
     override fun getItemCount(): Int {
         return sets.size
+    }
+
+    fun addSet(setz: ArrayList<Set>) {
+        sets = setz
+        this.notifyDataSetChanged()
+
     }
 }

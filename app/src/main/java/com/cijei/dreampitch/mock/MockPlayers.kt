@@ -53,7 +53,8 @@ class MockPlayers {
 
 class MockSets {
 
-    private lateinit var sets: ArrayList<Set>
+    private var sets: ArrayList<Set> = ArrayList()
+    var setz: ArrayList<Set> = ArrayList()
 
     fun getSets(): ArrayList<Set> {
         val teamCije = Set()
@@ -78,7 +79,7 @@ class MockSets {
         sets.add(teamCije)
         sets.add(teamGriezz)
         sets.add(teamVlad)
-
+        setz = sets
         return sets
     }
 
@@ -91,5 +92,6 @@ class MockSets {
         newSet.draws = 0
         newSet.loss = 0
         sets.add(newSet)
+        setz.add(newSet)
     }
 }

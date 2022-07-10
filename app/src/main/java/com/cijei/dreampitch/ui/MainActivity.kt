@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         setsFragment = SetsFragment()
 
         val fm: FragmentManager = supportFragmentManager
+        setsFragment.arguments = intent.extras
         fm.beginTransaction().replace(R.id.timer_fragment, setsFragment).commit()
 //        fm.beginTransaction().replace(R.id.timer_fragment, mainTimerFragment).commit()
         fm.beginTransaction().replace(R.id.bottom_menu_fragment, bottomMenuFragment).commit()

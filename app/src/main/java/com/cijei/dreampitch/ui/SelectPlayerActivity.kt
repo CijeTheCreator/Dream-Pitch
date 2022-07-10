@@ -15,6 +15,7 @@ import com.cijei.dreampitch.data.Player
 import com.cijei.dreampitch.data.Set
 import com.cijei.dreampitch.databinding.SelectPlayerFragmentBinding
 import com.cijei.dreampitch.mock.MockPlayers
+import com.cijei.dreampitch.mock.MockSets
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import org.w3c.dom.Text
@@ -26,6 +27,8 @@ class SelectPlayerActivity : AppCompatActivity() {
     private lateinit var players: List<Player>
     private lateinit var adapter: PlayerSearchAdapter
     private var selectedPlayers: ArrayList<Player> = ArrayList<Player>()
+    private var sets: ArrayList<Set> = ArrayList<Set>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +39,13 @@ class SelectPlayerActivity : AppCompatActivity() {
         val searchEditText = binding.playerSearchEditText
         searchEditText.addTextChangedListener(textWatcher)
 
+        val extras = intent.extras
+        val keys = extras?.get("Keys") as ArrayList<String>
+        for (key in keys) {
+            val set = extras.get(key) as Set
+            sets.add(set)
+        }
+
 
         val mockPlayers = MockPlayers()
         players = mockPlayers.getPlayers()
@@ -45,10 +55,18 @@ class SelectPlayerActivity : AppCompatActivity() {
 
         val floatingActionButton: FloatingActionButton = binding.floatingActionButton
         floatingActionButton.setOnClickListener {
+
             val set = createSet(selectedPlayers)
-            val i = Intent(this@SelectPlayerActivity, MainActivity::class.java)
+            sets.add(set)
             val bundle = Bundle()
-            bundle.putParcelable("AnyStringorKey", set)
+            val keyz = ArrayList<String>()
+            for (set in sets) {
+                keyz.add(set.teamName)
+                bundle.putParcelable(set.teamName, set)
+            }
+            bundle.putStringArrayList("Keys", keyz)
+
+            val i = Intent(this@SelectPlayerActivity, MainActivity::class.java)
             i.putExtras(bundle)
             startActivity(i)
         }
@@ -91,7 +109,7 @@ class SelectPlayerActivity : AppCompatActivity() {
 
     private fun createSet(selectedPlayers: ArrayList<Player>): Set {
         val newSet = Set()
-        newSet.teamName = "Team $selectedPlayers[0].name"
+        newSet.teamName = "Team ${selectedPlayers[0].name}"
         newSet.wins = 0
         newSet.loss = 0
         newSet.draws = 0
