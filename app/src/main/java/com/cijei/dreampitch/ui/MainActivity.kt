@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         bottomMenuFragment = BottomMenuFragment()
         mainTimerFragment = TimerFragment()
-        setsFragment = SetsFragment()
+        setsFragment = SetsFragment(null)
 
         val fm: FragmentManager = supportFragmentManager
         setsFragment.arguments = intent.extras

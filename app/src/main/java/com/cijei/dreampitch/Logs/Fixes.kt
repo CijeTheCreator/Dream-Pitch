@@ -19,3 +19,10 @@ for the fragment class
  @The fragment now, you'll read the stuff you put with the key that you used to put it. Ez
  arguments.get(key)
  */
+
+
+//Why the supportFragmentManager was not working
+/*
+I forgot to call the commit method on the transaction after attempting to change the fragment.
+See remove fragments @line21
+ */

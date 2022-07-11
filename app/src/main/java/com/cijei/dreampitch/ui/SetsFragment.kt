@@ -16,7 +16,7 @@ import com.cijei.dreampitch.data.Set
 import com.cijei.dreampitch.mock.MockSets
 import com.google.android.material.snackbar.Snackbar
 
-class SetsFragment: Fragment() {
+class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
 
     private lateinit var adapter: SetsAdapter
     private lateinit var sets: ArrayList<Set>
@@ -32,8 +32,14 @@ class SetsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         val setsHandler = MockSets()
         sets = setsHandler.getSets()
+
+        if (setz != null) {
+            sets = setz as ArrayList<Set>
+        }
 
 
         adapter = SetsAdapter(sets)
@@ -86,6 +92,10 @@ class SetsFragment: Fragment() {
         val removeButton = view.findViewById<Button>(R.id.remove_sets_button)
         removeButton.setOnClickListener {
             Snackbar.make(removeButton, "Remove Set", Snackbar.LENGTH_SHORT).show()
+            val removeSetsFragment = RemoveSetsFragment(sets)
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            transaction?.replace(R.id.timer_fragment, removeSetsFragment)
+            transaction?.commit()
         }
     }
 }
