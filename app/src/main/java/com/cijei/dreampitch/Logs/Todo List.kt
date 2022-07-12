@@ -11,3 +11,11 @@ Remove Sets
  When the tickers are selected and the floating action button is tapped, remove the selected items from the main list
  You should already be in the original fragment.
  */
+
+//12:07:2022
+/*
+Create the team details fragment
+Consult figma because I know it's 2 layout files that I'm creating.
+Finally, before I continue watching reign today, download the book on Drawing for 2d animation and
+Find out the plan for reading EM theory
+ */

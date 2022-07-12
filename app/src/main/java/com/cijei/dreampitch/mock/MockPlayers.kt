@@ -1,7 +1,12 @@
 package com.cijei.dreampitch.mock
 
+import com.cijei.dreampitch.data.Game
 import com.cijei.dreampitch.data.Player
 import com.cijei.dreampitch.data.Set
+import java.time.Instant
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.random.Random
 
 class MockPlayers {
 
@@ -93,5 +98,76 @@ class MockSets {
         newSet.loss = 0
         sets.add(newSet)
         setz.add(newSet)
+    }
+}
+
+class MockMatches() {
+
+    private var games: ArrayList<Game> = ArrayList()
+
+    fun  getMatches(set: Set?): ArrayList<Game> {
+        val mockSets = MockSets()
+        val sets = mockSets.getSets()
+
+        val game1 = Game(sets[1], sets[2], randomScoreGen(), randomScoreGen(), Date(2022, 1, 22))
+        val game2 = Game(sets[0], sets[1], randomScoreGen(), randomScoreGen(), Date(2022, 1, 22))
+        val game3 = Game(sets[0], sets[2], randomScoreGen(), randomScoreGen(), Date(2022, 1, 22))
+        val game4 = Game(sets[1], sets[0], randomScoreGen(), randomScoreGen(), Date(2022, 2, 22))
+        val game5 = Game(sets[2], sets[0], randomScoreGen(), randomScoreGen(), Date(2022, 2, 22))
+        val game6 = Game(sets[2], sets[1], randomScoreGen(), randomScoreGen(), Date(2022, 2, 22))
+        val game7 = Game(sets[0], sets[2], randomScoreGen(), randomScoreGen(), Date(2022, 3, 22))
+        val game8 = Game(sets[1], sets[0], randomScoreGen(), randomScoreGen(), Date(2022, 3, 22))
+        val game9 = Game(sets[1], sets[0], randomScoreGen(), randomScoreGen(), Date(2022, 3, 22))
+
+        val games = ArrayList<Game>()
+        games.add(game1)
+        games.add(game2)
+        games.add(game3)
+        games.add(game4)
+        games.add(game5)
+        games.add(game6)
+        games.add(game7)
+        games.add(game8)
+        games.add(game9)
+
+        return games
+    }
+
+    //This function needs more work
+    fun getMatchesByDate() {
+        val matches = getMatches(null)
+        val dates = ArrayList<Instant>()
+        val matchesByDate = ArrayList<ArrayList<Game>>()
+
+        for (match in matches) {
+            val matchDateInstant = match.date?.toInstant()
+            if (!dates.contains(matchDateInstant)) {
+                if (matchDateInstant != null) {
+                    dates.add(matchDateInstant)
+                }
+            }
+        }
+
+        for (date in dates) {
+            val gamesByThisDate = ArrayList<Game>()
+            for (match in matches) {
+                if (match.date?.toInstant() == date) {
+                    gamesByThisDate.add(match)
+                }
+            }
+            matchesByDate.add(gamesByThisDate)
+        }
+
+        println(matchesByDate)
+
+    }
+
+    private fun randomScoreGen(): Int {
+        val int = (Random.nextInt()/100000000)
+        if (int >= 0) {
+            return 1
+        } else {
+            return 0
+        }
     }
 }

@@ -4,16 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/activity_match_details.xml" value="0.1585144927536232" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/activity_select_player.xml" value="0.1585144927536232" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/bottom_menu.xml" value="0.33" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/bottom_menu_fragment.xml" value="0.33" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/main_timer_fragment.xml" value="0.5" />
+        <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/match_item.xml" value="0.25" />
+        <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/matches_by_date_item.xml" value="0.25" />
+        <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/matches_fragment.xml" value="0.1585144927536232" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/player_item.xml" value="0.67" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/remove_set_fragment.xml" value="0.33" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/remove_set_item.xml" value="0.5" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/select_player_fragment.xml" value="0.25" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/set_item.xml" value="0.67" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/sets_fragment.xml" value="0.33" />
+        <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/team_details_fragment.xml" value="0.1585144927536232" />
       </map>
     </option>
   </component>

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cijei.dreampitch.R
 import com.cijei.dreampitch.adapters.SetsAdapter
 import com.cijei.dreampitch.data.Set
+import com.cijei.dreampitch.mock.MockMatches
 import com.cijei.dreampitch.mock.MockSets
 import com.google.android.material.snackbar.Snackbar
 
@@ -32,7 +33,7 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        MockMatches().getMatchesByDate()
 
         val setsHandler = MockSets()
         sets = setsHandler.getSets()

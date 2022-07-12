@@ -10,22 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DreamPitch">
         <activity
+            android:name=".ui.TeamDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.SelectPlayerActivity"
-            android:exported="false">
-
-        </activity>
-
+            android:exported="false"></activity>
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
-
         </activity>
 
         <meta-data
