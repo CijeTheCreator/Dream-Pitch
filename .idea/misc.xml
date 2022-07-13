@@ -10,6 +10,7 @@
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/bottom_menu_fragment.xml" value="0.33" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/main_timer_fragment.xml" value="0.5" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/match_item.xml" value="0.25" />
+        <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/matches_by_date_activity.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/matches_by_date_item.xml" value="0.25" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/matches_fragment.xml" value="0.1585144927536232" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/player_item.xml" value="0.67" />
@@ -18,7 +19,9 @@
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/select_player_fragment.xml" value="0.25" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/set_item.xml" value="0.67" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/sets_fragment.xml" value="0.33" />
+        <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/team_detail_top_menu.xml" value="0.5756578947368421" />
         <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/team_details_fragment.xml" value="0.1585144927536232" />
+        <entry key="..\:/Users/Meme/AndroidStudioProjects/DreamPitch/app/src/main/res/layout/team_details_top_menu_fragment.xml" value="0.33" />
       </map>
     </option>
   </component>

@@ -19,3 +19,9 @@ Consult figma because I know it's 2 layout files that I'm creating.
 Finally, before I continue watching reign today, download the book on Drawing for 2d animation and
 Find out the plan for reading EM theory
  */
+
+//13:07:2022
+/*
+Implement the recycler view of recycler views.
+If there is still strength implement the lineup fragment.
+ */

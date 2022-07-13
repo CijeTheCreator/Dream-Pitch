@@ -134,7 +134,7 @@ class MockMatches() {
     }
 
     //This function needs more work
-    fun getMatchesByDate() {
+    fun getMatchesByDate(): ArrayList<ArrayList<Game>> {
         val matches = getMatches(null)
         val dates = ArrayList<Instant>()
         val matchesByDate = ArrayList<ArrayList<Game>>()
@@ -158,7 +158,7 @@ class MockMatches() {
             matchesByDate.add(gamesByThisDate)
         }
 
-        println(matchesByDate)
+        return matchesByDate
 
     }
 
