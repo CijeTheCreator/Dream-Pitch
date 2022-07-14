@@ -26,7 +26,6 @@ class TeamDetailMatchesFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val gamesByDate = MockMatches().getMatchesByDate()
         val matchesByDateRecyclerView = view.findViewById<RecyclerView>(R.id.matches_by_date_recycler_view)
-//        val matchesByDateItemRecyclerView = view.findViewById<RecyclerView>(R.id.match_by_date_item_recycler_view)
         val adapter = this.context?.let {
             MatchesByDateRecyclerViewAdapter(gamesByDate, it)
         }

@@ -25,3 +25,11 @@ Find out the plan for reading EM theory
 Implement the recycler view of recycler views.
 If there is still strength implement the lineup fragment.
  */
+
+//14:07:2022
+/*
+I don't have to start with a todo everytime I code
+But today finally is the day to build the squad layout file
+Create the fragment
+Build.
+ */
