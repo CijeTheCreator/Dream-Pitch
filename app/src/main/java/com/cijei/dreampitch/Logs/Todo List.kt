@@ -33,3 +33,8 @@ But today finally is the day to build the squad layout file
 Create the fragment
 Build.
  */
+
+//15:07:2022
+/*
+Dynamically populate the recycler view
+ */

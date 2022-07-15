@@ -35,11 +35,17 @@ class MockPlayers {
         honochie.club = "MNU"
         honochie.position = "ATT"
 
+        val emirates = Player()
+        emirates.name = "Emirates"
+        emirates.club = "CHE"
+        emirates.position = "DEF"
+
         players = ArrayList<Player>(4)
         players.add(chibuike)
         players.add(cije)
         players.add(honochie)
         players.add(vlad)
+        players.add(emirates)
 
         return players
     }
@@ -62,23 +68,29 @@ class MockSets {
     var setz: ArrayList<Set> = ArrayList()
 
     fun getSets(): ArrayList<Set> {
+
+        val players = MockPlayers().getPlayers()
         val teamCije = Set()
         teamCije.teamName = "Team Cije"
         teamCije.wins = 5
         teamCije.draws = 4
         teamCije.loss = 3
+        teamCije.players = players
+
 
         val teamGriezz = Set()
         teamGriezz.teamName = "Team Griezz"
         teamGriezz.wins = 6
         teamGriezz.draws = 7
         teamGriezz.loss = 9
+        teamGriezz.players = players
 
         val teamVlad = Set()
         teamVlad.wins = 6
         teamVlad.draws = 7
         teamVlad.loss = 9
         teamVlad.teamName = "Team Vlad"
+        teamVlad.players = players
 
         sets = ArrayList<Set>()
         sets.add(teamCije)

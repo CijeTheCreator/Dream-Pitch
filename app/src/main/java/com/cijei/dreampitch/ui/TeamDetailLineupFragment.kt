@@ -8,7 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.cijei.dreampitch.R
+import com.cijei.dreampitch.data.Player
 import com.cijei.dreampitch.data.Set
+import com.cijei.dreampitch.mock.MockSets
 
 class TeamDetailLineupFragment(val set: Set): Fragment() {
     override fun onCreateView(
@@ -27,12 +29,110 @@ class TeamDetailLineupFragment(val set: Set): Fragment() {
         val midfielder2ImageView = view.findViewById<ImageView>(R.id.midfielder2ImageView)
         val goalieImageView = view.findViewById<ImageView>(R.id.goalKeeper)
 
+        val selectedPlayers = ArrayList<Player>()
+        val selectedViewsGroup = ArrayList<ArrayList<View>>()
+
+
         val strikerTextView = view.findViewById<TextView>(R.id.strikerTextView)
         val defenderTextView = view.findViewById<TextView>(R.id.defenderTextView)
         val midfielder1TextView = view.findViewById<TextView>(R.id.midfielder1TextView)
         val midfielder2TextView = view.findViewById<TextView>(R.id.midfielder2TextView)
         val goalieTextView = view.findViewById<TextView>(R.id.goalKeeperTextView)
 
+        val strikerViews = arrayListOf<View>(strikerImageView, strikerTextView)
+        val midfielder1Views = arrayListOf<View>(midfielder1ImageView, midfielder1TextView)
+        val midfielder2Views = arrayListOf<View>(midfielder2ImageView, midfielder2TextView)
+        val defenderView = arrayListOf<View>(defenderImageView, defenderTextView)
+        val goalieView = arrayListOf<View>(goalieImageView, goalieTextView)
 
+        val viewGroups = arrayListOf<ArrayList<View>>(strikerViews, midfielder1Views, midfielder2Views, defenderView, goalieView)
+
+
+
+
+        val attackers = set.players.filter {
+            it.position.equals("ATT")
+        }
+        val midfielders = set.players.filter {
+            it.position.equals("MID")
+        }
+        val defenders = set.players.filter {
+            it.position.equals("DEF")
+        }
+
+        if (attackers.size == 1) {
+            strikerTextView.text = attackers[0].name
+            selectedPlayers.add(attackers[0])
+            selectedViewsGroup.add(strikerViews)
+            imageResourceSetter(strikerImageView, attackers[0])
+        }
+
+        if (midfielders.size == 2) {
+            midfielder1TextView.text = midfielders[0].name
+            midfielder2TextView.text = midfielders[1].name
+            selectedPlayers.add(midfielders[0])
+            selectedPlayers.add(midfielders[1])
+            selectedViewsGroup.add(midfielder1Views)
+            selectedViewsGroup.add(midfielder2Views)
+            imageResourceSetter(midfielder1ImageView,midfielders[0])
+            imageResourceSetter(midfielder2ImageView,midfielders[1])
+        }
+
+        if (defenders.size == 1) {
+            defenderTextView.text = defenders[0].name
+            selectedPlayers.add(defenders[0])
+            selectedViewsGroup.add(defenderView)
+            imageResourceSetter(defenderImageView, defenders[0])
+        }
+
+        val remainingPlayers = set.players.filter {
+            !selectedPlayers.contains(it)
+        }
+
+        val remainingViews = viewGroups.filter {
+            !selectedViewsGroup.contains(it)
+        }
+
+        if (remainingPlayers.size > 0)
+        {
+            for (i in 0 until remainingPlayers.size) {
+                val player = remainingPlayers[i]
+                val textView = remainingViews[i][1] as TextView
+                val imageView = remainingViews[i][0] as ImageView
+
+                textView.text = player.name
+                imageResourceSetter(imageView, player)
+            }
+        }
+
+
+    }
+
+    fun imageResourceSetter(imageView: ImageView, player: Player){
+        when (player.club) {
+            "ARS" -> {
+                imageView.setImageResource(R.drawable.ars)
+            }
+
+            "MCI" -> {
+                imageView.setImageResource(R.drawable.mci)
+            }
+
+            "LIV" -> {
+                imageView.setImageResource(R.drawable.liv)
+            }
+
+            "CHE" -> {
+                imageView.setImageResource(R.drawable.che)
+            }
+
+            "MNU" -> {
+                imageView.setImageResource(R.drawable.mnu)
+            }
+
+            else -> {
+                imageView.setImageResource(R.drawable.ars)
+            }
+        }
     }
 }

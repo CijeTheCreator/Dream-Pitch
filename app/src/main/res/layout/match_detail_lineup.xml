@@ -25,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:srcCompat="@drawable/arsenal" />
+        app:srcCompat="@drawable/ars" />
 
     <ImageView
         android:id="@+id/defenderImageView"
@@ -35,7 +35,7 @@
         app:layout_constraintBottom_toTopOf="@+id/goalKeeper"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:srcCompat="@drawable/arsenal" />
+        app:srcCompat="@drawable/ars" />
 
     <ImageView
         android:id="@+id/midfielder1ImageView"
@@ -45,7 +45,7 @@
         android:layout_marginBottom="45dp"
         app:layout_constraintBottom_toTopOf="@+id/defenderImageView"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:srcCompat="@drawable/arsenal" />
+        app:srcCompat="@drawable/ars" />
 
     <ImageView
         android:id="@+id/strikerImageView"
@@ -55,7 +55,7 @@
         app:layout_constraintBottom_toTopOf="@+id/midfielder1ImageView"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:srcCompat="@drawable/arsenal" />
+        app:srcCompat="@drawable/ars" />
 
     <ImageView
         android:id="@+id/midfielder2ImageView"
@@ -65,7 +65,7 @@
         android:layout_marginBottom="45dp"
         app:layout_constraintBottom_toTopOf="@+id/defenderImageView"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        app:srcCompat="@drawable/arsenal" />
+        app:srcCompat="@drawable/ars" />
 
     <TextView
         android:id="@+id/midfielder1TextView"
