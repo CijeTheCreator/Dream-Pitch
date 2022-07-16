@@ -25,7 +25,7 @@ class MatchDetailTopMenu: Fragment() {
 
         detailsButton.setOnClickListener {
             val matchDetailFragment = MatchDetails()
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.match_details_body, matchDetailFragment)
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.match_details_body, matchDetailFragment)?.commit()
         }
 
         lineupsButton.setOnClickListener {
