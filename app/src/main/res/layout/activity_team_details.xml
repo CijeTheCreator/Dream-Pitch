@@ -6,9 +6,9 @@
     android:layout_height="match_parent">
 
     <FrameLayout
-        android:id="@+id/match_details_top_menu"
-        android:layout_width="411dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/header_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -16,13 +16,15 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/match_details_body"
-        android:layout_width="411dp"
-        android:layout_height="638dp"
+        android:id="@+id/recycler_views_fragment"
+        android:layout_width="410dp"
+        android:layout_height="653dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/match_details_top_menu">
+        app:layout_constraintTop_toBottomOf="@+id/header_fragment"
+        app:layout_constraintVertical_bias="1.0">
 
     </FrameLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

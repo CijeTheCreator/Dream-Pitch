@@ -38,3 +38,8 @@ Build.
 /*
 Dynamically populate the recycler view
  */
+
+//17:07:2022
+/*
+Create the Match Detail Activity and the Player Detail Activity
+ */

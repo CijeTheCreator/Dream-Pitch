@@ -8,7 +8,7 @@ import com.cijei.dreampitch.R
 class TeamDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_match_details)
+        setContentView(R.layout.activity_team_details)
 
         val topMenu = TeamDetailTopMenuFragment()
         val fm: FragmentManager = supportFragmentManager
