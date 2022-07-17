@@ -39,7 +39,13 @@ Build.
 Dynamically populate the recycler view
  */
 
-//17:07:2022
+//16:07:2022
 /*
 Create the Match Detail Activity and the Player Detail Activity
+ */
+
+//17:07:2022
+/*
+Continue the good work with the match detail activity
+Create Mock events and add them to each game
  */

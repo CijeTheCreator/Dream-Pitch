@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.cijei.dreampitch.R
+import com.cijei.dreampitch.mock.MockMatches
 import com.google.android.material.snackbar.Snackbar
 
 class MatchDetailTopMenu: Fragment() {
@@ -22,14 +23,16 @@ class MatchDetailTopMenu: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val detailsButton = view.findViewById<TextView>(R.id.match_details_textView)
         val lineupsButton = view.findViewById<TextView>(R.id.match_lineups_textView)
+        val game = MockMatches().getMatches(null)[0]
 
         detailsButton.setOnClickListener {
-            val matchDetailFragment = MatchDetails()
+            val matchDetailFragment = MatchDetails(game)
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.match_details_body, matchDetailFragment)?.commit()
         }
 
         lineupsButton.setOnClickListener {
             Snackbar.make(lineupsButton, "To Team Lineups", Snackbar.LENGTH_SHORT).show()
+//            println(MockMatches().getMatches(null)[0].goals)
         }
 
     }

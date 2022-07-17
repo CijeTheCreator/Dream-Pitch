@@ -1,6 +1,7 @@
 package com.cijei.dreampitch.mock
 
 import com.cijei.dreampitch.data.Game
+import com.cijei.dreampitch.data.Goal
 import com.cijei.dreampitch.data.Player
 import com.cijei.dreampitch.data.Set
 import java.time.Instant
@@ -121,15 +122,17 @@ class MockMatches() {
         val mockSets = MockSets()
         val sets = mockSets.getSets()
 
-        val game1 = Game(sets[1], sets[2], randomScoreGen(), randomScoreGen(), Date(2022, 1, 22))
-        val game2 = Game(sets[0], sets[1], randomScoreGen(), randomScoreGen(), Date(2022, 1, 22))
-        val game3 = Game(sets[0], sets[2], randomScoreGen(), randomScoreGen(), Date(2022, 1, 22))
-        val game4 = Game(sets[1], sets[0], randomScoreGen(), randomScoreGen(), Date(2022, 2, 22))
-        val game5 = Game(sets[2], sets[0], randomScoreGen(), randomScoreGen(), Date(2022, 2, 22))
-        val game6 = Game(sets[2], sets[1], randomScoreGen(), randomScoreGen(), Date(2022, 2, 22))
-        val game7 = Game(sets[0], sets[2], randomScoreGen(), randomScoreGen(), Date(2022, 3, 22))
-        val game8 = Game(sets[1], sets[0], randomScoreGen(), randomScoreGen(), Date(2022, 3, 22))
-        val game9 = Game(sets[1], sets[0], randomScoreGen(), randomScoreGen(), Date(2022, 3, 22))
+
+
+        val game1 = Game(sets[1], sets[2], randomScoreGen(), randomScoreGen(), Date(2022, 1, 22), ArrayList<Goal>())
+        val game2 = Game(sets[0], sets[1], randomScoreGen(), randomScoreGen(), Date(2022, 1, 22),  ArrayList<Goal>())
+        val game3 = Game(sets[0], sets[2], randomScoreGen(), randomScoreGen(), Date(2022, 1, 22),  ArrayList<Goal>())
+        val game4 = Game(sets[1], sets[0], randomScoreGen(), randomScoreGen(), Date(2022, 2, 22),  ArrayList<Goal>())
+        val game5 = Game(sets[2], sets[0], randomScoreGen(), randomScoreGen(), Date(2022, 2, 22),  ArrayList<Goal>())
+        val game6 = Game(sets[2], sets[1], randomScoreGen(), randomScoreGen(), Date(2022, 2, 22),  ArrayList<Goal>())
+        val game7 = Game(sets[0], sets[2], randomScoreGen(), randomScoreGen(), Date(2022, 3, 22),  ArrayList<Goal>())
+        val game8 = Game(sets[1], sets[0], randomScoreGen(), randomScoreGen(), Date(2022, 3, 22),  ArrayList<Goal>())
+        val game9 = Game(sets[1], sets[0], randomScoreGen(), randomScoreGen(), Date(2022, 3, 22),  ArrayList<Goal>())
 
         val games = ArrayList<Game>()
         games.add(game1)
@@ -141,6 +144,27 @@ class MockMatches() {
         games.add(game7)
         games.add(game8)
         games.add(game9)
+
+        for (game in games) {
+            val homeOrAway = Random.nextInt(0, 2)
+        if (homeOrAway == 0) {
+            val randomScorer = Random.nextInt(0, 5)
+            val randomAssist = Random.nextInt(0, 5)
+            val randomTime = Random.nextInt(0, 11)
+
+            val goal = Goal(game.home?.players?.get(randomScorer), game.home?.players?.get(randomAssist), randomTime, "home")
+            game.goals.add(goal)
+        } else {
+            val randomScorer = Random.nextInt(0, 5)
+            val randomAssist = Random.nextInt(0, 5)
+            val randomTime = Random.nextInt(0, 11)
+
+            val goal = Goal(game.away?.players?.get(randomScorer), game.away?.players?.get(randomAssist), randomTime, "away")
+            game.goals = ArrayList<Goal>()
+            game.goals.add(goal)
+        }
+        }
+
 
         return games
     }
