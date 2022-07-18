@@ -31,8 +31,11 @@ class MatchDetailTopMenu: Fragment() {
         }
 
         lineupsButton.setOnClickListener {
-            Snackbar.make(lineupsButton, "To Team Lineups", Snackbar.LENGTH_SHORT).show()
-//            println(MockMatches().getMatches(null)[0].goals)
+            if (game.home != null) {
+                val matchDetailHomeLineupFragment = MatchDetailHomeLineupFragment(game.home!!, game)
+                val fm = activity?.supportFragmentManager
+                val transaction = fm?.beginTransaction()?.replace(R.id.match_details_body, matchDetailHomeLineupFragment)?.commit()
+            }
         }
 
     }

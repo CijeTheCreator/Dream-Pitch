@@ -49,3 +49,8 @@ Create the Match Detail Activity and the Player Detail Activity
 Continue the good work with the match detail activity
 Create Mock events and add them to each game
  */
+
+//18:07:2022
+/*
+Implement the lineups fragment for the match details
+ */

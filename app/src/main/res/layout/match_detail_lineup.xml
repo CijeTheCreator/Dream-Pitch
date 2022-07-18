@@ -18,19 +18,19 @@
 
     <ImageView
         android:id="@+id/goalKeeper"
-        android:layout_width="118dp"
-        android:layout_height="118dp"
-        android:layout_marginBottom="30dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:srcCompat="@drawable/ars" />
 
     <ImageView
         android:id="@+id/defenderImageView"
-        android:layout_width="118dp"
-        android:layout_height="118dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_marginBottom="45dp"
         app:layout_constraintBottom_toTopOf="@+id/goalKeeper"
         app:layout_constraintEnd_toEndOf="@+id/view"
@@ -39,18 +39,18 @@
 
     <ImageView
         android:id="@+id/midfielder1ImageView"
-        android:layout_width="118dp"
-        android:layout_height="118dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="45dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="44dp"
         app:layout_constraintBottom_toTopOf="@+id/defenderImageView"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:srcCompat="@drawable/ars" />
 
     <ImageView
         android:id="@+id/strikerImageView"
-        android:layout_width="118dp"
-        android:layout_height="118dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_marginBottom="45dp"
         app:layout_constraintBottom_toTopOf="@+id/midfielder1ImageView"
         app:layout_constraintEnd_toEndOf="@+id/view"
@@ -59,9 +59,9 @@
 
     <ImageView
         android:id="@+id/midfielder2ImageView"
-        android:layout_width="118dp"
-        android:layout_height="118dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="45dp"
         app:layout_constraintBottom_toTopOf="@+id/defenderImageView"
         app:layout_constraintEnd_toEndOf="@+id/view"
@@ -117,5 +117,32 @@
         app:layout_constraintEnd_toEndOf="@+id/goalKeeper"
         app:layout_constraintStart_toStartOf="@+id/goalKeeper"
         app:layout_constraintTop_toBottomOf="@+id/goalKeeper" />
+
+    <ImageView
+        android:id="@+id/match_detail_lineup_right_chevron"
+        android:layout_width="50dp"
+        android:layout_height="94dp"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/right_chevron" />
+
+    <ImageView
+        android:id="@+id/match_detail_lineup_left_chevron"
+        android:layout_width="50dp"
+        android:layout_height="94dp"
+        android:rotation="180"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/right_chevron" />
+
+    <TextView
+        android:id="@+id/team_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/match_detail_lineup_right_chevron"
+        app:layout_constraintEnd_toStartOf="@+id/match_detail_lineup_right_chevron"
+        app:layout_constraintStart_toEndOf="@+id/match_detail_lineup_left_chevron"
+        app:layout_constraintTop_toTopOf="@+id/match_detail_lineup_right_chevron" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
