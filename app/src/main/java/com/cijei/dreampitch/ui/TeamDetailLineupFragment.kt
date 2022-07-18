@@ -11,6 +11,7 @@ import com.cijei.dreampitch.R
 import com.cijei.dreampitch.data.Player
 import com.cijei.dreampitch.data.Set
 import com.cijei.dreampitch.mock.MockSets
+import com.google.android.material.snackbar.Snackbar
 
 class TeamDetailLineupFragment(val set: Set): Fragment() {
     override fun onCreateView(
@@ -133,6 +134,10 @@ class TeamDetailLineupFragment(val set: Set): Fragment() {
             else -> {
                 imageView.setImageResource(R.drawable.ars)
             }
+        }
+
+        imageView.setOnClickListener {
+            Snackbar.make(imageView, "To Player Details", Snackbar.LENGTH_SHORT).show()
         }
     }
 }

@@ -156,5 +156,9 @@ class MatchDetailHomeLineupFragment(val set: Set, val game: Game? = null): Fragm
                 imageView.setImageResource(R.drawable.ars)
             }
         }
+        imageView.setOnClickListener {
+            Snackbar.make(imageView, "To Player Details", Snackbar.LENGTH_SHORT).show()
+
+        }
     }
 }
