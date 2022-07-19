@@ -14,9 +14,10 @@ class CareerStatsAdapter(val matchdays: ArrayList<MatchDay>): RecyclerView.Adapt
 
     override fun onBindViewHolder(holder: CareerStatsViewHolder, position: Int) {
         val matchday = matchdays[position]
+        val date = matchday.date
         holder.apps.text = matchday.apps.toString()
         holder.assists.text = matchday.assists.toString()
-        holder.date.text = matchday.date.toString()
+        holder.date.text = "${date.year}/${date.month}/${date.year}"
         holder.goals.text = matchday.goals.toString()
         holder.setName.text = matchday.set.teamName
     }

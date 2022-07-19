@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cijei.dreampitch.R
 import com.cijei.dreampitch.adapters.CareerStatsAdapter
-import com.cijei.dreampitch.data.Player
-import com.cijei.dreampitch.data.Stat
 import com.cijei.dreampitch.mock.MockPlayers
 import com.cijei.dreampitch.mock.MockStats
 import kotlin.random.Random

@@ -92,7 +92,7 @@
         app:layout_constraintTop_toTopOf="@+id/view3" />
 
     <TextView
-        android:id="@+id/appearances_text_view"
+        android:id="@+id/rando"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Appearances"
@@ -128,7 +128,7 @@
         app:layout_constraintTop_toTopOf="@+id/view6" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/appearances_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1"
@@ -136,7 +136,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/view4"
         app:layout_constraintEnd_toEndOf="@+id/view4"
         app:layout_constraintStart_toStartOf="@+id/view4"
-        app:layout_constraintTop_toBottomOf="@+id/appearances_text_view" />
+        app:layout_constraintTop_toBottomOf="@+id/rando" />
 
     <TextView
         android:id="@+id/goals_text_view"
