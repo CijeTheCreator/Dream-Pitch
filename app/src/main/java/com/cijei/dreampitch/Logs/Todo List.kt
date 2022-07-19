@@ -54,3 +54,9 @@ Create Mock events and add them to each game
 /*
 Implement the lineups fragment for the match details
  */
+
+//19:09:2022
+/*
+Implement a Mock Stats Generator
+Build the Player detail activity
+ */

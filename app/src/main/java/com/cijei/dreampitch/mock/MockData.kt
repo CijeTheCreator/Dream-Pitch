@@ -1,8 +1,6 @@
 package com.cijei.dreampitch.mock
 
-import com.cijei.dreampitch.data.Game
-import com.cijei.dreampitch.data.Goal
-import com.cijei.dreampitch.data.Player
+import com.cijei.dreampitch.data.*
 import com.cijei.dreampitch.data.Set
 import java.time.Instant
 import java.util.*
@@ -205,5 +203,29 @@ class MockMatches() {
         } else {
             return 0
         }
+    }
+}
+
+class MockStats() {
+    fun getMockStats(player: Player): Stat {
+        val appearances = Random.nextInt(2, 50)
+        val goals = Random.nextInt(2, 100)
+        val wins = Random.nextInt(2, 50)
+        val losses = Random.nextInt(2, 50)
+
+        val date = Date(2001, 9, 19)
+
+        val matchDays = ArrayList<MatchDay>()
+        for (i in 0..20){
+            val apps = Random.nextInt(0, 20)
+            val gs = Random.nextInt(0, apps)
+            val ass = Random.nextInt(0, apps)
+            val set = MockSets().getSets()[Random.nextInt(0, 3)]
+            val matchDay = MatchDay(set, date, apps, gs, ass)
+            matchDays.add(matchDay)
+        }
+
+        val stat = Stat(appearances, goals, wins, losses, matchDays)
+        return stat
     }
 }
