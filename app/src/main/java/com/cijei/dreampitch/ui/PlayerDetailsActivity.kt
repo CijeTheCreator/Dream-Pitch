@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cijei.dreampitch.R
 import com.cijei.dreampitch.adapters.CareerStatsAdapter
+import com.cijei.dreampitch.data.Player
 import com.cijei.dreampitch.mock.MockPlayers
 import com.cijei.dreampitch.mock.MockStats
 import kotlin.random.Random
@@ -17,8 +18,10 @@ class PlayerDetailsActivity() : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player_details)
 
+        val data = intent.extras
+        val player = data?.get("genetics") as Player
+
         //TODO("The previous activity should pass in the player data")
-        val player = MockPlayers().getPlayers()[Random.nextInt(0, 4)]
         val stat = MockStats().getMockStats(player)
 
         val appearancesTextView = findViewById<TextView>(R.id.appearances_text_view)

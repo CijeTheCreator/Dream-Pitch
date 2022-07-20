@@ -60,3 +60,9 @@ Implement the lineups fragment for the match details
 Implement a Mock Stats Generator
 Build the Player detail activity
  */
+
+//20:09:2022
+/*
+Implement the stats fragment.
+Should have extra fragments for the individual players and months
+ */
