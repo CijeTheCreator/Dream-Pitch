@@ -217,7 +217,7 @@ class MockStats() {
 
         val matchDays = ArrayList<MatchDay>()
         for (i in 0..20){
-            val apps = Random.nextInt(0, 20)
+            val apps = Random.nextInt(1, 20)
             val gs = Random.nextInt(0, apps)
             val ass = Random.nextInt(0, apps)
             val set = MockSets().getSets()[Random.nextInt(0, 3)]
