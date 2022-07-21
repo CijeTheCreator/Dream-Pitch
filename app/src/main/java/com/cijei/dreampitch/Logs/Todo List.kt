@@ -66,3 +66,8 @@ Build the Player detail activity
 Implement the stats fragment.
 Should have extra fragments for the individual players and months
  */
+
+//21:07:2022
+/*
+Implement the Monthly Stats Fragment
+ */

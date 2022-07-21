@@ -27,7 +27,13 @@ class StatsFragmentHeader: Fragment() {
             Snackbar.make(view, "To Player Stats", Snackbar.LENGTH_SHORT).show()
             val fm = activity?.supportFragmentManager
             val statsFragmentPlayers = StatsFragmentPlayers()
-            fm?.beginTransaction()?.replace(R.id.stats_body,statsFragmentPlayers)
+            fm?.beginTransaction()?.replace(R.id.stats_body,statsFragmentPlayers)?.commit()
+        }
+
+        monthButton.setOnClickListener {
+            val fm = activity?.supportFragmentManager
+            val statsMonthFragment = StatsMonthFragment()
+            fm?.beginTransaction()?.replace(R.id.stats_body, statsMonthFragment)?.commit()
         }
     }
 }
