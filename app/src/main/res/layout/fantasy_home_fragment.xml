@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="1dp"
+        android:background="#D9D9D9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="90"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintEnd_toStartOf="@+id/textView9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/textView38"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toTopOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/textView39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AVERAGE"
+            app:layout_constraintEnd_toEndOf="@+id/textView33"
+            app:layout_constraintStart_toStartOf="@+id/textView33"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/textView40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="YOUR SCORE"
+            app:layout_constraintEnd_toEndOf="@+id/textView9"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/textView41"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HIGHEST"
+            app:layout_constraintEnd_toEndOf="@+id/textView38"
+            app:layout_constraintHorizontal_bias=".5"
+            app:layout_constraintStart_toStartOf="@+id/textView38"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/textView42"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="January, 12 2022 Points"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/view10"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:background="#D9D9D9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+    <View
+        android:id="@+id/view16"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="#D9D9D9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view10" />
+
+    <View
+        android:id="@+id/view20"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="#D9D9D9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view16" />
+
+    <TableLayout
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/view20"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintStart_toStartOf="@+id/view20"
+        app:layout_constraintTop_toBottomOf="@+id/view20"
+        app:layout_constraintVertical_bias=".5">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#D9D9D9">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fantasy_league_score_1"
+                android:layout_width="370dp"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/textView57a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="POS"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView55a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="SCORE"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView56a" />
+
+                <TextView
+                    android:id="@+id/textView56a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="67dp"
+                    android:text="TEAM"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView57a" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#D9D9D9">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="370dp"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/textView57b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="1."
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/fanstasy_league_score_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="SCORE"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/fantasy_league_player_1" />
+
+                <TextView
+                    android:id="@+id/fantasy_league_player_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="67dp"
+                    android:text="TEAM"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView57b" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#D9D9D9">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="370dp"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/textView57c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="2."
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/fantasy_league_score_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="SCORE"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/fantasy_league_player_2" />
+
+                <TextView
+                    android:id="@+id/fantasy_league_player_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="67dp"
+                    android:text="TEAM"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView57c" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#D9D9D9">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="370dp"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/textView47"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="3."
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/fantasy_league_score_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="SCORE"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/fantasy_league_player_3" />
+
+                <TextView
+                    android:id="@+id/fantasy_league_player_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="67dp"
+                    android:text="TEAM"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView47" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#D9D9D9">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="370dp"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/textView57"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="4."
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/fantasy_league_score_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="SCORE"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/fantasy_league_player_4" />
+
+                <TextView
+                    android:id="@+id/fantasy_league_player_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="67dp"
+                    android:text="TEAM"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView57" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="370dp"
+                android:layout_height="50dp"
+                android:background="#D9D9D9">
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="14sp"
+                    android:layout_height="14sp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView48"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView48"
+                    app:srcCompat="@drawable/right_chevron" />
+
+                <TextView
+                    android:id="@+id/textView48"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="View Full Table"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView6"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/textView49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Points"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view10"
+        app:layout_constraintStart_toStartOf="@+id/view10"
+        app:layout_constraintTop_toTopOf="@+id/view10" />
+
+    <TextView
+        android:id="@+id/textView50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Pick Team"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view16"
+        app:layout_constraintStart_toStartOf="@+id/view16"
+        app:layout_constraintTop_toTopOf="@+id/view16" />
+
+    <TextView
+        android:id="@+id/textView51"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Squad"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view20"
+        app:layout_constraintStart_toStartOf="@+id/view20"
+        app:layout_constraintTop_toTopOf="@+id/view20" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="20sp"
+        android:layout_height="20sp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view10"
+        app:layout_constraintEnd_toEndOf="@+id/view10"
+        app:layout_constraintTop_toTopOf="@+id/view10"
+        app:srcCompat="@drawable/right_chevron" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="20sp"
+        android:layout_height="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view16"
+        app:layout_constraintEnd_toEndOf="@+id/imageView13"
+        app:layout_constraintTop_toTopOf="@+id/view16"
+        app:srcCompat="@drawable/right_chevron" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="20sp"
+        android:layout_height="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view20"
+        app:layout_constraintEnd_toEndOf="@+id/imageView14"
+        app:layout_constraintTop_toTopOf="@+id/view20"
+        app:srcCompat="@drawable/right_chevron" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

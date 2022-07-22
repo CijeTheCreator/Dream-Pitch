@@ -71,3 +71,8 @@ Should have extra fragments for the individual players and months
 /*
 Implement the Monthly Stats Fragment
  */
+
+//22:07:2022
+/*
+Implement the fantasy area
+ */
