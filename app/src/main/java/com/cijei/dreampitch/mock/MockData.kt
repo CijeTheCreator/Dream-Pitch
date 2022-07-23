@@ -229,3 +229,23 @@ class MockStats() {
         return stat
     }
 }
+
+class MockFantasyData() {
+    fun createFantasyData(player: Player): FantasyData {
+        val score = Random.nextInt(23, 100)
+        val date = Date(2022, 7, 22)
+
+        val weekData = WeekData(score, date)
+        return FantasyData(score, arrayListOf(weekData), player)
+    }
+
+    fun getFantasyData(): ArrayList<FantasyData> {
+        val players = MockPlayers().getPlayers()
+        val fantasyDatas = ArrayList<FantasyData>()
+        for (player in players) {
+            val fantasyData = createFantasyData(player)
+            fantasyDatas.add(fantasyData)
+        }
+        return fantasyDatas
+    }
+}

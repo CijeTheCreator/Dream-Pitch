@@ -76,3 +76,8 @@ Implement the Monthly Stats Fragment
 /*
 Implement the fantasy area
  */
+
+//23:07:2022
+/*
+Create a mock fantasy data generator
+ */

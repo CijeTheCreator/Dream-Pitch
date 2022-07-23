@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/fantasy_your_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -27,48 +27,48 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView42" />
+            app:layout_constraintTop_toBottomOf="@+id/fantasy_date" />
 
         <TextView
-            android:id="@+id/textView33"
+            android:id="@+id/fantasy_average"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="50"
             android:textSize="50sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView9"
-            app:layout_constraintEnd_toStartOf="@+id/textView9"
+            app:layout_constraintBottom_toBottomOf="@+id/fantasy_your_score"
+            app:layout_constraintEnd_toStartOf="@+id/fantasy_your_score"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView9" />
+            app:layout_constraintTop_toTopOf="@+id/fantasy_your_score" />
 
         <TextView
-            android:id="@+id/textView38"
+            android:id="@+id/fantasy_highest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="50"
             android:textAlignment="center"
             android:textSize="50sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintBottom_toBottomOf="@+id/fantasy_your_score"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView9"
-            app:layout_constraintTop_toTopOf="@+id/textView9" />
+            app:layout_constraintStart_toEndOf="@+id/fantasy_your_score"
+            app:layout_constraintTop_toTopOf="@+id/fantasy_your_score" />
 
         <TextView
             android:id="@+id/textView39"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="AVERAGE"
-            app:layout_constraintEnd_toEndOf="@+id/textView33"
-            app:layout_constraintStart_toStartOf="@+id/textView33"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintEnd_toEndOf="@+id/fantasy_average"
+            app:layout_constraintStart_toStartOf="@+id/fantasy_average"
+            app:layout_constraintTop_toBottomOf="@+id/fantasy_your_score" />
 
         <TextView
             android:id="@+id/textView40"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="YOUR SCORE"
-            app:layout_constraintEnd_toEndOf="@+id/textView9"
-            app:layout_constraintStart_toStartOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintEnd_toEndOf="@+id/fantasy_your_score"
+            app:layout_constraintStart_toStartOf="@+id/fantasy_your_score"
+            app:layout_constraintTop_toBottomOf="@+id/fantasy_your_score" />
 
         <TextView
             android:id="@+id/textView41"
@@ -76,13 +76,13 @@
             android:layout_height="wrap_content"
             android:text="HIGHEST"
             android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="@+id/textView38"
+            app:layout_constraintEnd_toEndOf="@+id/fantasy_highest"
             app:layout_constraintHorizontal_bias=".5"
-            app:layout_constraintStart_toStartOf="@+id/textView38"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintStart_toStartOf="@+id/fantasy_highest"
+            app:layout_constraintTop_toBottomOf="@+id/fantasy_your_score" />
 
         <TextView
-            android:id="@+id/textView42"
+            android:id="@+id/fantasy_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -93,7 +93,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
-        android:id="@+id/view10"
+        android:id="@+id/points_button"
         android:layout_width="370dp"
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
@@ -103,7 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
     <View
-        android:id="@+id/view16"
+        android:id="@+id/pick_team_button"
         android:layout_width="370dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
@@ -111,10 +111,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view10" />
+        app:layout_constraintTop_toBottomOf="@+id/points_button" />
 
     <View
-        android:id="@+id/view20"
+        android:id="@+id/squad_button"
         android:layout_width="370dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
@@ -122,16 +122,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view16" />
+        app:layout_constraintTop_toBottomOf="@+id/pick_team_button" />
 
     <TableLayout
         android:layout_width="0dp"
         android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/view20"
+        app:layout_constraintEnd_toEndOf="@+id/squad_button"
         app:layout_constraintHorizontal_bias=".5"
-        app:layout_constraintStart_toStartOf="@+id/view20"
-        app:layout_constraintTop_toBottomOf="@+id/view20"
+        app:layout_constraintStart_toStartOf="@+id/squad_button"
+        app:layout_constraintTop_toBottomOf="@+id/squad_button"
         app:layout_constraintVertical_bias=".5">
 
         <TableRow
@@ -374,9 +374,9 @@
         android:layout_marginStart="8dp"
         android:text="Points"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/view10"
-        app:layout_constraintStart_toStartOf="@+id/view10"
-        app:layout_constraintTop_toTopOf="@+id/view10" />
+        app:layout_constraintBottom_toBottomOf="@+id/points_button"
+        app:layout_constraintStart_toStartOf="@+id/points_button"
+        app:layout_constraintTop_toTopOf="@+id/points_button" />
 
     <TextView
         android:id="@+id/textView50"
@@ -385,9 +385,9 @@
         android:layout_marginStart="8dp"
         android:text="Pick Team"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/view16"
-        app:layout_constraintStart_toStartOf="@+id/view16"
-        app:layout_constraintTop_toTopOf="@+id/view16" />
+        app:layout_constraintBottom_toBottomOf="@+id/pick_team_button"
+        app:layout_constraintStart_toStartOf="@+id/pick_team_button"
+        app:layout_constraintTop_toTopOf="@+id/pick_team_button" />
 
     <TextView
         android:id="@+id/textView51"
@@ -396,36 +396,36 @@
         android:layout_marginStart="8dp"
         android:text="Squad"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/view20"
-        app:layout_constraintStart_toStartOf="@+id/view20"
-        app:layout_constraintTop_toTopOf="@+id/view20" />
+        app:layout_constraintBottom_toBottomOf="@+id/squad_button"
+        app:layout_constraintStart_toStartOf="@+id/squad_button"
+        app:layout_constraintTop_toTopOf="@+id/squad_button" />
 
     <ImageView
         android:id="@+id/imageView13"
         android:layout_width="20sp"
         android:layout_height="20sp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view10"
-        app:layout_constraintEnd_toEndOf="@+id/view10"
-        app:layout_constraintTop_toTopOf="@+id/view10"
+        app:layout_constraintBottom_toBottomOf="@+id/points_button"
+        app:layout_constraintEnd_toEndOf="@+id/points_button"
+        app:layout_constraintTop_toTopOf="@+id/points_button"
         app:srcCompat="@drawable/right_chevron" />
 
     <ImageView
         android:id="@+id/imageView14"
         android:layout_width="20sp"
         android:layout_height="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/view16"
+        app:layout_constraintBottom_toBottomOf="@+id/pick_team_button"
         app:layout_constraintEnd_toEndOf="@+id/imageView13"
-        app:layout_constraintTop_toTopOf="@+id/view16"
+        app:layout_constraintTop_toTopOf="@+id/pick_team_button"
         app:srcCompat="@drawable/right_chevron" />
 
     <ImageView
         android:id="@+id/imageView15"
         android:layout_width="20sp"
         android:layout_height="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/view20"
+        app:layout_constraintBottom_toBottomOf="@+id/squad_button"
         app:layout_constraintEnd_toEndOf="@+id/imageView14"
-        app:layout_constraintTop_toTopOf="@+id/view20"
+        app:layout_constraintTop_toTopOf="@+id/squad_button"
         app:srcCompat="@drawable/right_chevron" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
