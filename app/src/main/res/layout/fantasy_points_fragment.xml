@@ -13,7 +13,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="131dp">
+        tools:layout_editor_absoluteY="113dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:id="@+id/linearLayout3"
+                android:id="@+id/fantasy_goalie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -35,6 +35,7 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <ImageView
+                    android:id="@+id/fantasy_golie_image_view"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     app:srcCompat="@drawable/ars" />
@@ -45,6 +46,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/fantasy_goalie_name_textview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#FFFFFF"
@@ -53,6 +55,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/fantasy_goalie_score_textview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#333333"
@@ -63,16 +66,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout"
+                android:id="@+id/fantasy_defender_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+                app:layout_constraintBottom_toTopOf="@+id/fantasy_goalie"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/linearLayout3">
+                app:layout_constraintStart_toEndOf="@+id/fantasy_goalie">
 
                 <ImageView
+                    android:id="@+id/fantasy_defender_1_image_view"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     app:srcCompat="@drawable/ars" />
@@ -83,6 +87,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/fantasy_defender_1_name_textview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#FFFFFF"
@@ -91,6 +96,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/fantasy_defender_1_score_textview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#333333"
@@ -101,16 +107,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout2"
+                android:id="@+id/fantasy_defender_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-                app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
+                app:layout_constraintBottom_toTopOf="@+id/fantasy_goalie"
+                app:layout_constraintEnd_toStartOf="@+id/fantasy_goalie"
                 app:layout_constraintStart_toStartOf="parent">
 
                 <ImageView
+                    android:id="@+id/fantasy_defender_2_image_view"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     app:srcCompat="@drawable/ars" />
@@ -121,6 +128,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/fantasy_defender_2_name_text_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#FFFFFF"
@@ -129,6 +137,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/fantasy_defender_2_score_textview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#333333"
@@ -139,16 +148,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout4"
+                android:id="@+id/fantasy_midfielder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-                app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-                app:layout_constraintStart_toEndOf="@+id/linearLayout2">
+                app:layout_constraintBottom_toTopOf="@+id/fantasy_defender_2"
+                app:layout_constraintEnd_toStartOf="@+id/fantasy_defender_1"
+                app:layout_constraintStart_toEndOf="@+id/fantasy_defender_2">
 
                 <ImageView
+                    android:id="@+id/fantasy_midfielder_image_view"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     app:srcCompat="@drawable/ars" />
@@ -159,6 +169,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/fantasy_midfielder_name_textview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#FFFFFF"
@@ -167,6 +178,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/fantasy_midfielder_points_textview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#333333"
@@ -177,16 +189,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout5"
+                android:id="@+id/fantasy_striker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout4">
+                app:layout_constraintBottom_toTopOf="@+id/fantasy_midfielder"
+                app:layout_constraintEnd_toEndOf="@+id/fantasy_midfielder"
+                app:layout_constraintStart_toStartOf="@+id/fantasy_midfielder">
 
                 <ImageView
+                    android:id="@+id/fantasy_striker_image_view"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     app:srcCompat="@drawable/ars" />
@@ -197,6 +210,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/fantasy_striker_name_text_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#FFFFFF"
@@ -205,6 +219,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/fantasy_striker_score_text_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#333333"
@@ -218,12 +233,141 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="120dp"
+            android:background="#D9D9D9"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/constraintLayout3"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
+            <LinearLayout
+                android:id="@+id/fantasy_sub2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/fantasy_sub3"
+                app:layout_constraintStart_toEndOf="@+id/fantasy_sub1"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/fantasy_sub2_imageview"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    app:srcCompat="@drawable/ars" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fantasy_sub2_name_textview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF"
+                        android:text="TextView"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/fantasy_sub2_score_textview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#333333"
+                        android:text="TextView"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fantasy_sub1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/fantasy_sub1_imageview"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    app:srcCompat="@drawable/ars" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fantasy_sub1_name_textview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF"
+                        android:text="TextView"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/fantasy_sub1_score_textview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#333333"
+                        android:text="TextView"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fantasy_sub3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/fantasy_sub3_imageview"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    app:srcCompat="@drawable/ars" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fantasy_sub3_name_textview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF"
+                        android:text="TextView"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/fantasy_sub3_score_textview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#333333"
+                        android:text="TextView"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="391dp"
+        android:layout_height="111dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
