@@ -81,3 +81,8 @@ Implement the fantasy area
 /*
 Create a mock fantasy data generator
  */
+
+//26:07:2022
+/*
+Populate the fantasy points fragment with mock data
+ */
