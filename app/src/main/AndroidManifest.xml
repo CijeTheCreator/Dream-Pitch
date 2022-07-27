@@ -10,8 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DreamPitch">
         <activity
-            android:name=".ui.TempHostActivity"
+            android:name=".ui.FantasySelectPlayers"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,9 +20,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.PlayerDetailsActivity"
+            android:name=".ui.TempHostActivity"
             android:exported="false">
+
         </activity>
+        <activity
+            android:name=".ui.PlayerDetailsActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.MatchDetailActivity"
             android:exported="false" />

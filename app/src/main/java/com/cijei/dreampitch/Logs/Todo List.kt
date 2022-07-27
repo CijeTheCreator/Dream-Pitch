@@ -86,3 +86,10 @@ Create a mock fantasy data generator
 /*
 Populate the fantasy points fragment with mock data
  */
+
+//27:07:2022
+/*
+Well, we are back from that frenzy,
+Create a new activity for selecting players,
+it should have 2 recycler views
+ */
