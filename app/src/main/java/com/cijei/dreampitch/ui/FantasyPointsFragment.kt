@@ -9,9 +9,14 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.cijei.dreampitch.R
 import com.cijei.dreampitch.data.FantasyPlayer
+import com.cijei.dreampitch.data.Player
 import com.cijei.dreampitch.mock.MockFantasyScores
 
 class FantasyPointsFragment: Fragment() {
+
+
+    private lateinit var players: ArrayList<Player>
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,8 +29,15 @@ class FantasyPointsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        players = ArrayList<Player>()
+        val keys = arguments?.get("keyz") as ArrayList<String>
+        for (key in keys) {
+            val player = arguments?.get(key) as Player
+            players.add(player)
+        }
+
         val fantasyPlayers = dynamicify(view)
-        val fantasyScores = MockFantasyScores().getFantasyScores()
+        val fantasyScores = MockFantasyScores(players).getFantasyScores()
 
         for (i in 0 until fantasyScores.size) {
             fantasyPlayers[i].setNameAndScore(fantasyScores[i])
@@ -71,7 +83,7 @@ class FantasyPointsFragment: Fragment() {
 
         val f_Striker = FantasyPlayer(fantasyStriker, fantasyStrikerScore, fantasyStrikerName)
         val f_Midfielder = FantasyPlayer(fantasyMidfielder, fantasyMidfielderScore, fantasyMidfielderName)
-        val f_Defender1 = FantasyPlayer(fantasyDefender1, fantasyDefender1Score, fantasyDefender2Score)
+        val f_Defender1 = FantasyPlayer(fantasyDefender1, fantasyDefender1Score, fantasyDefender1Name)
         val f_Defender2 = FantasyPlayer(fantasyDefender2, fantasyDefender2Score, fantasyDefender2Name)
         val f_Goalie = FantasyPlayer(fantasyGoalie, fantasyGoalieScore, fantasyGoalieName)
         val f_Sub1 = FantasyPlayer(fantasySub1, fantasySub1Score, fantasySub1Name)

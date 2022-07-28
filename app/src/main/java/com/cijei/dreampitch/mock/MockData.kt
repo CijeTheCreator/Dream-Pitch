@@ -250,9 +250,8 @@ class MockFantasyData() {
     }
 }
 
-class MockFantasyScores() {
+class MockFantasyScores(val players: ArrayList<Player>) {
     fun getFantasyScores(): ArrayList<FantasyScore> {
-        val players = MockPlayers().getPlayers()
         val fantasyScores = ArrayList<FantasyScore>()
         for (player in players) {
             val score = Random.nextInt(2, 30)

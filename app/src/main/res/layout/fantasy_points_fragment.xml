@@ -365,8 +365,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
-        android:layout_width="391dp"
-        android:layout_height="111dp"
+        android:layout_width="400dp"
+        android:layout_height="59dp"
         android:background="#5CD9D9D9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

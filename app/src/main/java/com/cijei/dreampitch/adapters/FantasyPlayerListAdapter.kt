@@ -6,9 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cijei.dreampitch.data.Player
 import com.cijei.dreampitch.databinding.FantasyPlayerItemBinding
 import com.cijei.dreampitch.viewholders.FantasyPlayerListViewHolder
+import com.google.android.material.snackbar.Snackbar
 import kotlin.random.Random
 
-class FantasyPlayerListAdapter(val players: ArrayList<Player>): RecyclerView.Adapter<FantasyPlayerListViewHolder>() {
+class FantasyPlayerListAdapter(var players: ArrayList<Player>, val selectedFantasyPlayerListAdapter: SelectedFantasyPlayerListAdapter): RecyclerView.Adapter<FantasyPlayerListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FantasyPlayerListViewHolder {
         return FantasyPlayerListViewHolder(FantasyPlayerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
@@ -20,9 +21,20 @@ class FantasyPlayerListAdapter(val players: ArrayList<Player>): RecyclerView.Ada
         holder.form.text = "${Random.nextInt(0, 10)}.0"
         holder.price.text = "$15.0"
         holder.selected.text = "23%"
+        holder.transparencyView.setOnClickListener {
+            selectedFantasyPlayerListAdapter.addPlayer(player)
+            println(selectedFantasyPlayerListAdapter.playerz.map {
+                it.name
+            })
+        }
     }
 
     override fun getItemCount(): Int {
         return players.size
+    }
+
+    fun setSearchData(playerz: ArrayList<Player>) {
+        players = playerz
+        this.notifyDataSetChanged()
     }
 }

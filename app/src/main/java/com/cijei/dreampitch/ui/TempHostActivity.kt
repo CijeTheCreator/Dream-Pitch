@@ -9,9 +9,12 @@ class TempHostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_temp_host)
 
+        val data = intent.extras
+
         val statsFragment = StatsFragment()
         val fantasyHomeFragment = FantasyHomeFragment()
         val fantasyPointsFragment = FantasyPointsFragment()
+        fantasyPointsFragment.arguments = data
         val fm = supportFragmentManager
         fm.beginTransaction().replace(R.id.stats, fantasyPointsFragment).commit()
     }

@@ -93,3 +93,8 @@ Well, we are back from that frenzy,
 Create a new activity for selecting players,
 it should have 2 recycler views
  */
+
+//28:07:2022
+/*
+Build the functionality of the Player Select Activity
+ */

@@ -9,4 +9,5 @@ class FantasyPlayerListViewHolder(databinding: FantasyPlayerItemBinding): Recycl
     val form = databinding.fantasyFormTextView
     val price = databinding.fantasyPriceTextView
     val selected = databinding.fantasySelectedTextView
+    val transparencyView = databinding.transparencyView
 }
