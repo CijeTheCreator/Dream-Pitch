@@ -98,3 +98,8 @@ it should have 2 recycler views
 /*
 Build the functionality of the Player Select Activity
  */
+
+//29:07:2022
+/*
+INEC day
+ */
