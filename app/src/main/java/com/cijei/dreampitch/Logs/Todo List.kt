@@ -103,3 +103,8 @@ Build the functionality of the Player Select Activity
 /*
 INEC day
  */
+
+//30:07:2022
+/*
+Fix the glitch
+ */
