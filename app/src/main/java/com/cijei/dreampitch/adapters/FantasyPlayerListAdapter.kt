@@ -26,6 +26,7 @@ class FantasyPlayerListAdapter(var players: ArrayList<Player>, val selectedFanta
             println(selectedFantasyPlayerListAdapter.playerz.map {
                 it.name
             })
+            it.background.alpha = 250
         }
     }
 

@@ -108,3 +108,7 @@ INEC day
 /*
 Fix the glitch
  */
+
+//1:August:2022
+//Finally done with the essay
+//Start guming the app together
