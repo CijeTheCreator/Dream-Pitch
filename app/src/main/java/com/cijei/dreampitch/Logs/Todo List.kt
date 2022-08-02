@@ -112,3 +112,8 @@ Fix the glitch
 //1:August:2022
 //Finally done with the essay
 //Start guming the app together
+
+//2:08:2022
+/*
+Start Mapping out the app, fragment by fragment
+ */

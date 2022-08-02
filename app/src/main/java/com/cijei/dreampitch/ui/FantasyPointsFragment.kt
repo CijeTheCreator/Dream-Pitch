@@ -12,7 +12,7 @@ import com.cijei.dreampitch.data.FantasyPlayer
 import com.cijei.dreampitch.data.Player
 import com.cijei.dreampitch.mock.MockFantasyScores
 
-class FantasyPointsFragment: Fragment() {
+class FantasyPointsFragment(val playerz: ArrayList<Player>): Fragment() {
 
 
     private lateinit var players: ArrayList<Player>
@@ -29,11 +29,15 @@ class FantasyPointsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        players = ArrayList<Player>()
-        val keys = arguments?.get("keyz") as ArrayList<String>
-        for (key in keys) {
-            val player = arguments?.get(key) as Player
-            players.add(player)
+        if (arguments?.get("keyz") != null){
+            players = ArrayList<Player>()
+            val keys = arguments?.get("keyz") as ArrayList<String>
+            for (key in keys) {
+                val player = arguments?.get(key) as Player
+                players.add(player)
+            }
+        } else {
+            players = playerz
         }
 
         val fantasyPlayers = dynamicify(view)

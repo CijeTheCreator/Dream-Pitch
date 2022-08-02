@@ -17,7 +17,7 @@ class MatchesByDateRecyclerViewAdapter(val matchesByDate: ArrayList<ArrayList<Ga
     override fun onBindViewHolder(holder: MatchesByDateViewHolder, position: Int) {
         val layoutManager = LinearLayoutManager(context)
         holder.matchesByDateRecyclerView.layoutManager = layoutManager
-        val adapter = MatchesByDateRecyclerViewItemAdapter(matchesByDate[position])
+        val adapter = MatchesByDateRecyclerViewItemAdapter(matchesByDate[position], context)
         holder.matchesByDateRecyclerView.adapter = adapter
 
         holder.matchDate.text = matchesByDate[position][0].date.toString()

@@ -43,7 +43,7 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
         }
 
 
-        adapter = SetsAdapter(sets)
+        adapter = SetsAdapter(sets, this.requireContext())
         val layoutManager = LinearLayoutManager(this.context)
         val recyclerView = view.findViewById<RecyclerView>(R.id.setsRecyclerView)
 

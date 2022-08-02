@@ -1,5 +1,6 @@
 package com.cijei.dreampitch.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -70,7 +71,12 @@ class FantasyHomeFragment: Fragment() {
         highest.text = Random.nextInt(50, 100).toString()
 
         pointsButton.setOnClickListener {
-            Snackbar.make(it, "To Points", Snackbar.LENGTH_SHORT).show()
+
+            val players = MockPlayers().getPlayers()
+
+            val fantasyPointsFragment = FantasyPointsFragment(players)
+            val fm = activity?.supportFragmentManager
+            fm?.beginTransaction()?.replace(R.id.timer_fragment, fantasyPointsFragment)?.commit()
         }
 
         squadButton.setOnClickListener {
@@ -79,6 +85,8 @@ class FantasyHomeFragment: Fragment() {
 
         pickTeamButton.setOnClickListener {
             Snackbar.make(it, "Pick Team", Snackbar.LENGTH_SHORT).show()
+            val i = Intent(this.requireContext(), FantasySelectPlayers::class.java)
+            startActivity(i)
         }
 
 
