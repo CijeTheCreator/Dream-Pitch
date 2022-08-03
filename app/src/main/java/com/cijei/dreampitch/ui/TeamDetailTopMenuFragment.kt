@@ -24,6 +24,7 @@ class TeamDetailTopMenuFragment: Fragment() {
         val matchesMenuButton = view.findViewById<TextView>(R.id.matchesTextView)
         val lineupsButton = view.findViewById<TextView>(R.id.lineupsTextView)
 
+        //TODO("Set should be passed to the fragment")
         val set = MockSets().getSets()[0]
 
         matchesMenuButton.setOnClickListener() {

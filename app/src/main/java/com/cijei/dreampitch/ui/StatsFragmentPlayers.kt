@@ -24,6 +24,7 @@ class StatsFragmentPlayers: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView = view.findViewById<RecyclerView>(R.id.stats_fragment_players_recycler_view)
+        //TODO("Players should be from the players database")
         val players = MockPlayers().getPlayers()
         val layoutManager = LinearLayoutManager(this.context)
         val adapter = StatPlayersAdapter(players, this.requireContext())

@@ -1,5 +1,6 @@
 package com.cijei.dreampitch.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -159,6 +160,11 @@ class MatchDetailAwayLineupFragment(val set: Set, val game: Game? = null): Fragm
         }
         imageView.setOnClickListener {
             Snackbar.make(imageView, "To Player Details", Snackbar.LENGTH_SHORT).show()
+            val i = Intent(this.requireContext(), PlayerDetailsActivity::class.java)
+            val bundle = Bundle()
+            bundle.putParcelable("genetics", player)
+            i.putExtras(bundle)
+            startActivity(i)
         }
     }
 }

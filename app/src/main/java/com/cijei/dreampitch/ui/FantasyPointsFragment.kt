@@ -41,6 +41,7 @@ class FantasyPointsFragment(val playerz: ArrayList<Player>): Fragment() {
         }
 
         val fantasyPlayers = dynamicify(view)
+        //TODO("For each player, get the player's score from the fantasyDatabase")
         val fantasyScores = MockFantasyScores(players).getFantasyScores()
 
         for (i in 0 until fantasyScores.size) {
@@ -51,6 +52,7 @@ class FantasyPointsFragment(val playerz: ArrayList<Player>): Fragment() {
 
     private fun dynamicify(view: View): ArrayList<FantasyPlayer> {
         //Top Values
+        //TODO("Also get these from the general fantasyScores database")
         val fantasyPointsAverage = view.findViewById<TextView>(R.id.fantasy_points_average_text_view)
         val fantasyPointsYourScore = view.findViewById<TextView>(R.id.fantasy_points_your_score_textview)
         val fantasyPointsHighest = view.findViewById<TextView>(R.id.fantasy_points_highest_textview)

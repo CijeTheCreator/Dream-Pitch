@@ -47,6 +47,7 @@ class SelectPlayerActivity : AppCompatActivity() {
         }
 
 
+        //TODO("Fetch players from the player database")
         val mockPlayers = MockPlayers()
         players = mockPlayers.getPlayers()
         adapter = PlayerSearchAdapter(players, selectedPlayers)

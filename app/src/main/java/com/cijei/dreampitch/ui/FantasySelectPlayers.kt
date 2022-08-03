@@ -28,6 +28,7 @@ class FantasySelectPlayers : AppCompatActivity() {
         setContentView(R.layout.activity_fantasy_select_players)
 
         //Replace later
+        //TODO("Get these players from the fantasy database")
         val players = MockPlayers().getPlayers()
 
 

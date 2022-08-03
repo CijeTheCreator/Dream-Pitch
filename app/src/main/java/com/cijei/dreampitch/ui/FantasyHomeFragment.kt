@@ -26,6 +26,7 @@ class FantasyHomeFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //TODO("The currentPlayer here should be the logged in player")
         val currentPlayer = MockPlayers().getPlayers()[0]
 
         val average = view.findViewById<TextView>(R.id.fantasy_average)
@@ -49,6 +50,7 @@ class FantasyHomeFragment: Fragment() {
         val names = arrayListOf<TextView>(miniTableName1, miniTableName2, miniTableName3, miniTableName4)
         val scores = arrayListOf<TextView>(miniTableScore1, miniTableScore2, miniTableScore3, miniTableScore4)
 
+        //TODO("fantasyData should be the fantasyData entry that has the current players id as the secondary key")
         val fantasyData = MockFantasyData().getFantasyData()
 
         for (i in  0 until fantasyData.size){
@@ -61,9 +63,11 @@ class FantasyHomeFragment: Fragment() {
             }
         }
 
+        //TODO("currentData, is the date for fantasyData's entry")
         val currentDate = Date(2022, 7, 23)
         date.text = "${currentDate.day}, ${currentDate.date}, ${currentDate.month}, ${currentDate.year}"
 
+        //TODO("currentPlayerFantasyData, fantasyData that has the currentPlayer as it's secondary key")
         val currentPlayerFantasyData = fantasyData[0]
 
         average.text = Random.nextInt(10, 50).toString()
@@ -72,6 +76,7 @@ class FantasyHomeFragment: Fragment() {
 
         pointsButton.setOnClickListener {
 
+            //TODO("players should be gotten from the fantasy database, for the currentPlayers selection")
             val players = MockPlayers().getPlayers()
 
             val fantasyPointsFragment = FantasyPointsFragment(players)

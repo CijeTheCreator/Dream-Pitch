@@ -33,8 +33,9 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        MockMatches().getMatchesByDate()
 
+
+        //TODO("Get these sets from the set database")
         val setsHandler = MockSets()
         sets = setsHandler.getSets()
 
@@ -61,6 +62,7 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
                 val set = arguments?.get(key) as Set
                 setz.add(set)
             }
+            //TODO("Add this set to the set database")
             adapter.addSet(setz)
             sets = setz
             Snackbar.make(view.findViewById(R.id.add_sets_button), "${setz[setz.size - 1].teamName} Added", Snackbar.LENGTH_SHORT).show()

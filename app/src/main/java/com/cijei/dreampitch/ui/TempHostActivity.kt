@@ -14,6 +14,7 @@ class TempHostActivity : AppCompatActivity() {
 
         val statsFragment = StatsFragment()
         val fantasyHomeFragment = FantasyHomeFragment()
+        //TODO("To be gotten from the fantasy database")
         val fantasyPointsFragment = FantasyPointsFragment(MockPlayers().getPlayers())
         fantasyPointsFragment.arguments = data
         val fm = supportFragmentManager

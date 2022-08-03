@@ -24,6 +24,16 @@ class TeamDetailLineupFragment(val set: Set): Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //Removed navigation for Team Detail Lineups
+        val leftChevron = view.findViewById<ImageView>(R.id.match_detail_lineup_left_chevron)
+        val rightChevron = view.findViewById<ImageView>(R.id.match_detail_lineup_right_chevron)
+        leftChevron.visibility = View.INVISIBLE
+        rightChevron.visibility = View.INVISIBLE
+        val teamNameTextView = view.findViewById<TextView>(R.id.team_name_text_view)
+        teamNameTextView.visibility = View.INVISIBLE
+
+
         val strikerImageView = view.findViewById<ImageView>(R.id.strikerImageView)
         val defenderImageView = view.findViewById<ImageView>(R.id.defenderImageView)
         val midfielder1ImageView = view.findViewById<ImageView>(R.id.midfielder1ImageView)
@@ -105,6 +115,8 @@ class TeamDetailLineupFragment(val set: Set): Fragment() {
                 imageResourceSetter(imageView, player)
             }
         }
+
+
 
 
     }

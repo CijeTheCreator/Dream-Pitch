@@ -16,6 +16,8 @@ import com.cijei.dreampitch.mock.MockPlayers
 
 class TimerFragment: Fragment() {
 
+    //TODO("Should take in 2 teams before starting, the 2 teams would create a game")
+    //TODO("If the countdown ends or is ended, the goal scorer and the assistor should be asked for and recorded")
     private var tempPauseMinuteData: Int = 0
     private var tempPauseSecondData: Int = 0
     private var isPaused = false

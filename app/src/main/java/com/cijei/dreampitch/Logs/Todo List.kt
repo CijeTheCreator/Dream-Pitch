@@ -117,3 +117,12 @@ Fix the glitch
 /*
 Start Mapping out the app, fragment by fragment
  */
+
+//3:08:2022
+/*
+Plan the network/data management
+I already know it'll be slow but it will allow me to master networking
+Before that, Touching the scorer in match details should go to player details, make a todo to show a
+drop menu for either player or assistor just like in sofa score
+Also touching the player in the lineups area should go to player details.
+ */

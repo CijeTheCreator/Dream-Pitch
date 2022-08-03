@@ -1,5 +1,6 @@
 package com.cijei.dreampitch.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,7 @@ import com.cijei.dreampitch.databinding.MatchDetailItemHomeBinding
 import com.cijei.dreampitch.viewholders.MatchDetailAwayViewHolder
 import com.cijei.dreampitch.viewholders.MatchDetailHomeViewHolder
 
-class MatchDetailAdapter(val goals: ArrayList<Goal>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MatchDetailAdapter(val goals: ArrayList<Goal>, val context: Context): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private object Const{
         val HOME = 0
         val AWAY = 1
@@ -28,10 +29,12 @@ class MatchDetailAdapter(val goals: ArrayList<Goal>): RecyclerView.Adapter<Recyc
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == HOME) {
-            (holder as MatchDetailHomeViewHolder).bind(goals[position])
+            (holder as MatchDetailHomeViewHolder).bind(goals[position], context)
+
         } else {
-            (holder as MatchDetailAwayViewHolder).bind(goals[position])
+            (holder as MatchDetailAwayViewHolder).bind(goals[position], context)
         }
+
     }
 
     override fun getItemCount(): Int {

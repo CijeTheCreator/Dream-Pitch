@@ -23,6 +23,7 @@ class MatchDetailTopMenu: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val detailsButton = view.findViewById<TextView>(R.id.match_details_textView)
         val lineupsButton = view.findViewById<TextView>(R.id.match_lineups_textView)
+        //TODO("This should be gotten onclick, get the game from the games database")
         val game = MockMatches().getMatches(null)[0]
 
         detailsButton.setOnClickListener {

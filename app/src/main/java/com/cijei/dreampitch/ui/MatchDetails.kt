@@ -38,7 +38,7 @@ class MatchDetails(var match: Game): Fragment() {
         team2score.text = match.awayScore.toString()
 
         val layoutManager = LinearLayoutManager(this.context)
-        val adapter = MatchDetailAdapter(match.goals)
+        val adapter = MatchDetailAdapter(match.goals, this.requireContext())
 
         matchDetailsRecyclerView.adapter = adapter
         matchDetailsRecyclerView.layoutManager = layoutManager

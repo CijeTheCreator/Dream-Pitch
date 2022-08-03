@@ -24,6 +24,8 @@ class TeamDetailMatchesFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //TODO("Get it from the Games Database, these games must contain the team")
+        //TODO("This fragment should accept the clicked team")
         val gamesByDate = MockMatches().getMatchesByDate()
         val matchesByDateRecyclerView = view.findViewById<RecyclerView>(R.id.matches_by_date_recycler_view)
         val adapter = this.context?.let {
