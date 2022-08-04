@@ -126,3 +126,8 @@ Before that, Touching the scorer in match details should go to player details, m
 drop menu for either player or assistor just like in sofa score
 Also touching the player in the lineups area should go to player details.
  */
+
+//4:08:2022
+/*
+Firebase basics preview day.
+ */
