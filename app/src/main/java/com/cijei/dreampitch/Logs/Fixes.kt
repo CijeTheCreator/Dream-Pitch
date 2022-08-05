@@ -26,3 +26,17 @@ for the fragment class
 I forgot to call the commit method on the transaction after attempting to change the fragment.
 See remove fragments @line21
  */
+
+//Build was configured to prefer settings repositories over project repositories but repository 'Google' was added by build file
+/*
+Go to settings.gradle
+Remove the whole dependencyResolutionManagement block
+ */
+
+//Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+/*
+At buildscripts > dependencies
+Add mavenCentral()
+
+At allRepositiories > add mavenCentral() under google
+ */
