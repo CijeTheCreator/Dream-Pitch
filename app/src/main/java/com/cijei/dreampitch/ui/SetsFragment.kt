@@ -1,5 +1,7 @@
 package com.cijei.dreampitch.ui
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,6 +18,8 @@ import com.cijei.dreampitch.data.Set
 import com.cijei.dreampitch.mock.MockMatches
 import com.cijei.dreampitch.mock.MockSets
 import com.google.android.material.snackbar.Snackbar
+import java.util.*
+import kotlin.collections.ArrayList
 
 class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
 
@@ -99,6 +103,33 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
             transaction?.replace(R.id.timer_fragment, removeSetsFragment)
             transaction?.commit()
+        }
+
+        val startMatchButton = view.findViewById<Button>(R.id.start_match_button)
+        startMatchButton.setOnClickListener {
+            val builder = AlertDialog.Builder(this.requireContext())
+            val selectedSets = ArrayList<Int>()
+            val setsArrayList = sets.map {
+                it.teamName
+            }
+            val setsArray = setsArrayList.toTypedArray()
+            val booleanArrayList = ArrayList<Boolean>()
+            for (set in setsArray) {
+                booleanArrayList.add(false)
+            }
+            val booleanArray = booleanArrayList.toBooleanArray()
+            builder.setTitle("Select Teams")
+
+            builder.setMultiChoiceItems(setsArray, booleanArray) { dialog, which, isChecked ->
+              if (isChecked) {
+                  selectedSets.add(which)
+              } else if (selectedSets.contains(which)) {
+                  selectedSets.remove(which)
+              }
+            }.setPositiveButton("Done") {dialog, id ->
+                Snackbar.make(removeButton, "Done", Snackbar.LENGTH_SHORT).show()
+            }
+            builder.show()
         }
     }
 }

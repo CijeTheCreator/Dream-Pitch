@@ -6,12 +6,12 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/timer_text_view"
+        android:id="@+id/sets_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:fontFamily="sans-serif"
-        android:text="Timer"
+        android:text="Sets"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/stats_text_view" />
@@ -25,7 +25,7 @@
         android:text="Stats"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fantasy_text_view"
-        app:layout_constraintStart_toEndOf="@+id/timer_text_view"
+        app:layout_constraintStart_toEndOf="@+id/sets_text_view"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

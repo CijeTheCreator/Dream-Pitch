@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.cijei.dreampitch.R
-import org.w3c.dom.Text
 
 class BottomMenuFragment: Fragment() {
     override fun onCreateView(
@@ -20,14 +19,15 @@ class BottomMenuFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val timerTextView = view.findViewById<TextView>(R.id.timer_text_view)
+        val setsTextView = view.findViewById<TextView>(R.id.sets_text_view)
         val statsTextView = view.findViewById<TextView>(R.id.stats_text_view)
         val fantasyTextView = view.findViewById<TextView>(R.id.fantasy_text_view)
 
-        timerTextView.setOnClickListener {
-            val mainTimerFragment = TimerFragment()
+        setsTextView.setOnClickListener {
+            val setsFragment = SetsFragment(null)
+//            val mainTimerFragment = TimerFragment()
             val fm = activity?.supportFragmentManager
-            fm?.beginTransaction()?.replace(R.id.timer_fragment, mainTimerFragment)?.commit()
+            fm?.beginTransaction()?.replace(R.id.timer_fragment, setsFragment)?.commit()
             //TODO("Bolden and Underline it")
         }
 
