@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cijei.dreampitch.R
 import com.cijei.dreampitch.adapters.SetsAdapter
+import com.cijei.dreampitch.data.Game
 import com.cijei.dreampitch.data.Set
 import com.cijei.dreampitch.mock.MockMatches
 import com.cijei.dreampitch.mock.MockSets
@@ -127,7 +128,12 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
                   selectedSets.remove(which)
               }
             }.setPositiveButton("Done") {dialog, id ->
+                println(selectedSets)
                 Snackbar.make(removeButton, "Done", Snackbar.LENGTH_SHORT).show()
+                //Start the timer
+                val timerFragment = TimerFragment(sets[selectedSets[0]], sets[selectedSets[1]])
+                val fm = activity?.supportFragmentManager
+                fm?.beginTransaction()?.replace(R.id.timer_fragment, timerFragment)?.commit()
             }
             builder.show()
         }

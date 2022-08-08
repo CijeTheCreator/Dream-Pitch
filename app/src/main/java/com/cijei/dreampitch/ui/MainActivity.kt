@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         bottomMenuFragment = BottomMenuFragment()
-        mainTimerFragment = TimerFragment()
+//        mainTimerFragment = TimerFragment()
         setsFragment = SetsFragment(null)
 
         val fm: FragmentManager = supportFragmentManager

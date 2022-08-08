@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "769535713826",
+    "firebase_url": "https://dream-pitch-default-rtdb.firebaseio.com",
+    "project_id": "dream-pitch",
+    "storage_bucket": "dream-pitch.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769535713826:android:f902f7d5329e644100207b",
+        "android_client_info": {
+          "package_name": "com.cijei.dreampitch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "769535713826-p7j2c1ja1aosa5uko62tdq5jlafoe5qk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD16Gpxb3lQAUyp0tS2NbpunHidj58f15I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "769535713826-p7j2c1ja1aosa5uko62tdq5jlafoe5qk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769535713826:android:a606e3a7386725dd00207b",
+        "android_client_info": {
+          "package_name": "com.cijei.firebasedemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "769535713826-p7j2c1ja1aosa5uko62tdq5jlafoe5qk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD16Gpxb3lQAUyp0tS2NbpunHidj58f15I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "769535713826-p7j2c1ja1aosa5uko62tdq5jlafoe5qk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
