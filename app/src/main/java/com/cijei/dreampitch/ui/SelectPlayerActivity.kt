@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -18,7 +19,12 @@ import com.cijei.dreampitch.mock.MockPlayers
 import com.cijei.dreampitch.mock.MockSets
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import org.w3c.dom.Text
+import java.time.LocalDateTime
+import java.util.*
+import kotlin.collections.ArrayList
 
 class SelectPlayerActivity : AppCompatActivity() {
 
@@ -28,10 +34,16 @@ class SelectPlayerActivity : AppCompatActivity() {
     private lateinit var adapter: PlayerSearchAdapter
     private var selectedPlayers: ArrayList<Player> = ArrayList<Player>()
     private var sets: ArrayList<Set> = ArrayList<Set>()
+    private lateinit var database: DatabaseReference
 
+    private lateinit var keyDatabase: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        database = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com").getReference("Sets")
+        keyDatabase = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com").getReference("MatchDays")
+
         binding = SelectPlayerFragmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -57,7 +69,7 @@ class SelectPlayerActivity : AppCompatActivity() {
         val floatingActionButton: FloatingActionButton = binding.floatingActionButton
         floatingActionButton.setOnClickListener {
 
-            val set = createSet(selectedPlayers)
+            val set = createSet(selectedPlayers, it)
             sets.add(set)
             val bundle = Bundle()
             val keyz = ArrayList<String>()
@@ -108,13 +120,29 @@ class SelectPlayerActivity : AppCompatActivity() {
 
     }
 
-    private fun createSet(selectedPlayers: ArrayList<Player>): Set {
+    private fun createSet(selectedPlayers: ArrayList<Player>, view: View): Set {
         val newSet = Set()
+        val uuid = UUID.randomUUID()
         newSet.teamName = "Team ${selectedPlayers[0].name}"
         newSet.wins = 0
         newSet.loss = 0
         newSet.draws = 0
         newSet.players = selectedPlayers
+        val date = LocalDateTime.now()
+
+
+        database.child("${newSet.teamName} $uuid").setValue(newSet).addOnSuccessListener {
+            Snackbar.make(view, "${newSet.teamName} created successfully", Snackbar.LENGTH_SHORT).show()
+        }.addOnFailureListener {
+            Snackbar.make(view, "Creation failed", Snackbar.LENGTH_SHORT).show()
+
+        }
+
+        keyDatabase.child("${date.dayOfMonth} ${date.month} ${date.year}").child("${newSet.teamName} $uuid").push()
+
+
+
+
         return newSet
     }
 

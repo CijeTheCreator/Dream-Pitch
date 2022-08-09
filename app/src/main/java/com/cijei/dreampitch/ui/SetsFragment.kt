@@ -19,6 +19,8 @@ import com.cijei.dreampitch.data.Set
 import com.cijei.dreampitch.mock.MockMatches
 import com.cijei.dreampitch.mock.MockSets
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -26,6 +28,7 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
 
     private lateinit var adapter: SetsAdapter
     private lateinit var sets: ArrayList<Set>
+    private lateinit var database: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +41,7 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        database = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com/").getReference("Sets")
 
 
         //TODO("Get these sets from the set database")
