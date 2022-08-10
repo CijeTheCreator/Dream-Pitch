@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,12 +16,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cijei.dreampitch.R
 import com.cijei.dreampitch.adapters.SetsAdapter
 import com.cijei.dreampitch.data.Game
+import com.cijei.dreampitch.data.Player
 import com.cijei.dreampitch.data.Set
 import com.cijei.dreampitch.mock.MockMatches
 import com.cijei.dreampitch.mock.MockSets
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -29,6 +30,7 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
     private lateinit var adapter: SetsAdapter
     private lateinit var sets: ArrayList<Set>
     private lateinit var database: DatabaseReference
+    private lateinit var setsFromDatabase: ArrayList<Set>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,13 +46,72 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
         database = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com/").getReference("Sets")
 
 
+        setsFromDatabase = ArrayList<Set>()
         //TODO("Get these sets from the set database")
-        val setsHandler = MockSets()
-        sets = setsHandler.getSets()
+
+
+        val listener = object : ValueEventListener {
+            override fun onDataChange(p0: DataSnapshot) {
+                for (postSnapshot in p0.children) {
+                    val set = Set()
+                    val draws = postSnapshot.child("draws").value as Long
+                    val loss = postSnapshot.child("loss").value as Long
+                    val wins = postSnapshot.child("wins").value as Long
+                    val teamName = postSnapshot.child("teamName").value as String
+
+                    val players = postSnapshot.child("players").children
+                    val playerxs = ArrayList<Player>()
+                     for (player in players) {
+                         val playerx = Player()
+                         val playerName = player.child("name").value as String
+                         val playerClub = player.child("club").value as String
+                         val playerPosition = player.child("position").value as String
+
+                         playerx.name = playerName
+                         playerx.club = playerClub
+                         playerx.position = playerPosition
+
+                         playerxs.add(playerx)
+                     }
+
+                    set.teamName = teamName
+                    set.wins = wins.toInt()
+                    set.loss = loss.toInt()
+                    set.draws = draws.toInt()
+                    set.players = playerxs
+
+                    setsFromDatabase.add(set)
+                }
+
+                println(setsFromDatabase)
+                view.findViewById<ProgressBar>(R.id.setLoaderProgressBar).visibility = View.INVISIBLE
+                mainCode(view, setsFromDatabase)
+            }
+
+
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+
+        }
+
+
+        database.addValueEventListener(listener)
+
+
+
+    }
+
+    private fun mainCode(view: View, setiz: ArrayList<Set>) {
+//        val setsHandler = MockSets()
+        sets = setiz
 
         if (setz != null) {
             sets = setz as ArrayList<Set>
         }
+
+
 
 
         adapter = SetsAdapter(sets, this.requireContext())
@@ -126,11 +187,11 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
             builder.setTitle("Select Teams")
 
             builder.setMultiChoiceItems(setsArray, booleanArray) { dialog, which, isChecked ->
-              if (isChecked) {
-                  selectedSets.add(which)
-              } else if (selectedSets.contains(which)) {
-                  selectedSets.remove(which)
-              }
+                if (isChecked) {
+                    selectedSets.add(which)
+                } else if (selectedSets.contains(which)) {
+                    selectedSets.remove(which)
+                }
             }.setPositiveButton("Done") {dialog, id ->
                 println(selectedSets)
                 Snackbar.make(removeButton, "Done", Snackbar.LENGTH_SHORT).show()
