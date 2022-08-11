@@ -19,8 +19,7 @@ import com.cijei.dreampitch.mock.MockPlayers
 import com.cijei.dreampitch.mock.MockSets
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import org.w3c.dom.Text
 import java.time.LocalDateTime
 import java.util.*
@@ -35,6 +34,7 @@ class SelectPlayerActivity : AppCompatActivity() {
     private var selectedPlayers: ArrayList<Player> = ArrayList<Player>()
     private var sets: ArrayList<Set> = ArrayList<Set>()
     private lateinit var database: DatabaseReference
+    private lateinit var playerDatabase: DatabaseReference
 
     private lateinit var keyDatabase: DatabaseReference
 
@@ -44,10 +44,11 @@ class SelectPlayerActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com").getReference("Sets")
         keyDatabase = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com").getReference("MatchDays")
 
+        playerDatabase = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com").getReference("Players")
+
         binding = SelectPlayerFragmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val layoutManager = LinearLayoutManager(this)
         val searchEditText = binding.playerSearchEditText
         searchEditText.addTextChangedListener(textWatcher)
 
@@ -58,48 +59,7 @@ class SelectPlayerActivity : AppCompatActivity() {
             sets.add(set)
         }
 
-
-        //TODO("Fetch players from the player database")
-        val mockPlayers = MockPlayers()
-        players = mockPlayers.getPlayers()
-        adapter = PlayerSearchAdapter(players, selectedPlayers)
-        binding.playerSearchRecyclerView.adapter = adapter
-        binding.playerSearchRecyclerView.layoutManager = layoutManager
-
-        val floatingActionButton: FloatingActionButton = binding.floatingActionButton
-        floatingActionButton.setOnClickListener {
-
-            val set = createSet(selectedPlayers, it)
-            sets.add(set)
-            val bundle = Bundle()
-            val keyz = ArrayList<String>()
-            for (set in sets) {
-                keyz.add(set.teamName)
-                bundle.putParcelable(set.teamName, set)
-            }
-            bundle.putStringArrayList("Keys", keyz)
-
-            val i = Intent(this@SelectPlayerActivity, MainActivity::class.java)
-            i.putExtras(bundle)
-            startActivity(i)
-        }
-
-        val addButton: Button = binding.addButton
-        addButton.setOnClickListener {
-            val editText: EditText = EditText(this)
-            val dialog = AlertDialog.Builder(this).setView(editText).setTitle("Add Player").setMessage("Enter Player Name")
-            dialog.setPositiveButton("Add") { _, _ ->
-                val playerName = editText.text.toString()
-                val player_ = Player()
-                player_.name = playerName
-                player_.club = "LIV"
-                player_.position = "MID"
-                mockPlayers.addPlayer(player_.name,player_.position, player_.club)
-                val newPlayerList = players as ArrayList<Player>
-                adapter.setSearchData(newPlayerList)
-            }
-            dialog.create().show()
-        }
+        playerDatabase.addValueEventListener(playerDataListener)
     }
 
     val textWatcher = object : TextWatcher {
@@ -144,6 +104,79 @@ class SelectPlayerActivity : AppCompatActivity() {
 
 
         return newSet
+    }
+
+    private fun mainCode(playerz: ArrayList<Player>) {
+        binding.playerSelectProgressBar.visibility = View.INVISIBLE
+//        val mockPlayers = MockPlayers()
+        players = playerz
+        adapter = PlayerSearchAdapter(players, selectedPlayers)
+        val layoutManager = LinearLayoutManager(this)
+        binding.playerSearchRecyclerView.adapter = adapter
+        binding.playerSearchRecyclerView.layoutManager = layoutManager
+
+        val floatingActionButton: FloatingActionButton = binding.floatingActionButton
+        floatingActionButton.setOnClickListener {
+
+            val set = createSet(selectedPlayers, it)
+            sets.add(set)
+            val bundle = Bundle()
+            val keyz = ArrayList<String>()
+            for (set in sets) {
+                keyz.add(set.teamName)
+                bundle.putParcelable(set.teamName, set)
+            }
+            bundle.putStringArrayList("Keys", keyz)
+
+            val i = Intent(this@SelectPlayerActivity, MainActivity::class.java)
+            i.putExtras(bundle)
+            startActivity(i)
+        }
+
+        val addButton: Button = binding.addButton
+        addButton.setOnClickListener {
+            val editText: EditText = EditText(this)
+            val dialog = AlertDialog.Builder(this).setView(editText).setTitle("Add Player").setMessage("Enter Player Name")
+            dialog.setPositiveButton("Add") { _, _ ->
+                val playerName = editText.text.toString()
+                val player_ = Player()
+                player_.name = playerName
+                player_.club = "LIV"
+                player_.position = "MID"
+//                mockPlayers.addPlayer(player_.name,player_.position, player_.club)
+                playerDatabase.child(playerName).setValue(player_)
+                val newPlayerList = players as ArrayList<Player>
+                adapter.setSearchData(newPlayerList)
+            }
+            dialog.create().show()
+        }
+    }
+
+    val playerDataListener = object : ValueEventListener {
+        override fun onDataChange(p0: DataSnapshot) {
+            val databasePlayers = p0.children
+            val players = ArrayList<Player>()
+
+            for (player in databasePlayers) {
+                val name = player.child("name").value as String
+                val position = player.child("position").value as String
+                val club = player.child("club").value as String
+
+                val newPlayer = Player()
+                newPlayer.name = name
+                newPlayer.position = position
+                newPlayer.club = club
+
+                players.add(newPlayer)
+            }
+
+            mainCode(players)
+        }
+
+        override fun onCancelled(p0: DatabaseError) {
+            TODO("Not yet implemented")
+        }
+
     }
 
 }

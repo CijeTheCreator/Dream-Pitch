@@ -90,7 +90,7 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
 
 
             override fun onCancelled(p0: DatabaseError) {
-                TODO("Not yet implemented")
+                Snackbar.make(view.findViewById(R.id.remove_sets_button), p0.message, Snackbar.LENGTH_SHORT).show()
             }
 
 

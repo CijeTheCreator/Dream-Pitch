@@ -47,4 +47,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ProgressBar
+        android:id="@+id/playerSelectProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/playerSearchRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/playerSearchRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/playerSearchRecyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/playerSearchEditText"
+        app:layout_constraintVertical_bias="0.302" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
