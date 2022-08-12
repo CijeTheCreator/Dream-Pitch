@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import com.cijei.dreampitch.R
+import com.cijei.dreampitch.data.Set
 import com.cijei.dreampitch.mock.MockSets
 
 class TeamDetailsActivity : AppCompatActivity() {
@@ -13,12 +14,13 @@ class TeamDetailsActivity : AppCompatActivity() {
 
         val topMenu = TeamDetailTopMenuFragment()
         //TODO("Use the set from the previous activity")
-        val teamDetailsLineupFragment = TeamDetailLineupFragment(MockSets().getSets()[0])
+        val set = intent.extras?.get("set") as Set
+        val teamDetailsLineupFragment = TeamDetailLineupFragment(set)
         val fm: FragmentManager = supportFragmentManager
+
+
         fm.beginTransaction().replace(R.id.header_fragment, topMenu).commit()
         fm.beginTransaction().replace(R.id.recycler_views_fragment, teamDetailsLineupFragment).commit()
-
-
 
     }
 }

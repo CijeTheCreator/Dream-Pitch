@@ -25,6 +25,8 @@ class TeamDetailLineupFragment(val set: Set): Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         //Removed navigation for Team Detail Lineups
         val leftChevron = view.findViewById<ImageView>(R.id.match_detail_lineup_left_chevron)
         val rightChevron = view.findViewById<ImageView>(R.id.match_detail_lineup_right_chevron)

@@ -83,7 +83,11 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
                     setsFromDatabase.add(set)
                 }
 
-                println(setsFromDatabase)
+                println(setsFromDatabase.map {
+                    it.players.map {
+                        it.name
+                    }
+                })
                 view.findViewById<ProgressBar>(R.id.setLoaderProgressBar).visibility = View.INVISIBLE
                 mainCode(view, setsFromDatabase)
             }
@@ -107,9 +111,10 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
 //        val setsHandler = MockSets()
         sets = setiz
 
-        if (setz != null) {
-            sets = setz as ArrayList<Set>
-        }
+        //TODO("Remember to undo this")
+//        if (setz != null) {
+//            sets = setz as ArrayList<Set>
+//        }
 
 
 

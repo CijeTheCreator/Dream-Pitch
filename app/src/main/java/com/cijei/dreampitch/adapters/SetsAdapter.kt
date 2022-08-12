@@ -2,6 +2,7 @@ package com.cijei.dreampitch.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +27,9 @@ class SetsAdapter(private var sets: ArrayList<Set>, val context: Context): Recyc
         holder.expandChevron.setOnClickListener {
 //            Snackbar.make(holder.expandChevron, "To Set Details", Snackbar.LENGTH_LONG).show()
             val i = Intent(context, TeamDetailsActivity::class.java)
+            val bundle = Bundle()
+            bundle.putParcelable("set", set)
+            i.putExtras(bundle)
             context.startActivity(i)
         }
 

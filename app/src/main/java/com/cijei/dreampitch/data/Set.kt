@@ -15,6 +15,9 @@ class Set() : Parcelable{
         wins = parcel.readInt()
         draws = parcel.readInt()
         loss = parcel.readInt()
+        players = arrayListOf<Player>().apply {
+            parcel.readList(this, Player::class.java.classLoader)
+        }
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -22,6 +25,7 @@ class Set() : Parcelable{
         parcel.writeInt(wins)
         parcel.writeInt(draws)
         parcel.writeInt(loss)
+        parcel.writeList(players)
     }
 
     override fun describeContents(): Int {
