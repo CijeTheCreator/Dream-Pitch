@@ -154,6 +154,7 @@ class TimerFragment(val home: Set, val away: Set): Fragment() {
                             val game = Game(home, away, homeScore, awayScore, date, goals)
 
                             //This print should carry it to firebase
+
                             database.child("${home.teamName} vs ${away.teamName} $uuid").setValue(game).addOnSuccessListener {
                                 Snackbar.make(view.findViewById(R.id.stop_button), "Game successfully written to the database", Snackbar.LENGTH_SHORT).show()
                                 val setsFragment = SetsFragment(null)

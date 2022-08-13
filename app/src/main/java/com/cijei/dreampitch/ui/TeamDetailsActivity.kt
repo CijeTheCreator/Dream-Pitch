@@ -12,9 +12,9 @@ class TeamDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_team_details)
 
-        val topMenu = TeamDetailTopMenuFragment()
         //TODO("Use the set from the previous activity")
         val set = intent.extras?.get("set") as Set
+        val topMenu = TeamDetailTopMenuFragment(set)
         val teamDetailsLineupFragment = TeamDetailLineupFragment(set)
         val fm: FragmentManager = supportFragmentManager
 

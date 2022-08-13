@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.cijei.dreampitch.R
+import com.cijei.dreampitch.data.Set
 import com.cijei.dreampitch.mock.MockSets
 
-class TeamDetailTopMenuFragment: Fragment() {
+class TeamDetailTopMenuFragment(val set: Set): Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,7 +26,7 @@ class TeamDetailTopMenuFragment: Fragment() {
         val lineupsButton = view.findViewById<TextView>(R.id.lineupsTextView)
 
         //TODO("Set should be passed to the fragment")
-        val set = MockSets().getSets()[0]
+//        val set = MockSets().getSets()[0]
 
         matchesMenuButton.setOnClickListener() {
             val matchesFragment = TeamDetailMatchesFragment()
