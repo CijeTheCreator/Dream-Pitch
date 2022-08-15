@@ -148,3 +148,8 @@ Decide the database structure
 Learn kotlin coroutines
 Day 1
  */
+
+//15:08:2022
+/*
+Apply coroutines to the dream pitch code little little
+ */

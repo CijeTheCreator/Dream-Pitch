@@ -9,7 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cijei.dreampitch.R
 import com.cijei.dreampitch.adapters.MatchesByDateRecyclerViewAdapter
+import com.cijei.dreampitch.data.Database
+import com.cijei.dreampitch.data.Game
 import com.cijei.dreampitch.mock.MockMatches
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class TeamDetailMatchesFragment: Fragment() {
@@ -18,7 +24,6 @@ class TeamDetailMatchesFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        return super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.matches_by_date_activity, container, false)
     }
 
@@ -26,7 +31,17 @@ class TeamDetailMatchesFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //TODO("Get it from the Games Database, these games must contain the team")
         //TODO("This fragment should accept the clicked team")
-        val gamesByDate = MockMatches().getMatchesByDate()
+        GlobalScope.launch {
+            val gamesbyDate = Database().getMatchesByDate()
+            withContext(Dispatchers.Main) {
+                updateUI(view, gamesbyDate)
+            }
+        }
+
+
+    }
+
+    private fun updateUI(view: View, gamesByDate: ArrayList<ArrayList<Game>>) {
         val matchesByDateRecyclerView = view.findViewById<RecyclerView>(R.id.matches_by_date_recycler_view)
         val adapter = this.context?.let {
             MatchesByDateRecyclerViewAdapter(gamesByDate, it)
@@ -34,6 +49,5 @@ class TeamDetailMatchesFragment: Fragment() {
         matchesByDateRecyclerView.adapter = adapter
         val layoutManager = LinearLayoutManager(this.context)
         matchesByDateRecyclerView.layoutManager = layoutManager
-
     }
 }

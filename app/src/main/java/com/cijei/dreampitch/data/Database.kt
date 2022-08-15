@@ -8,11 +8,13 @@ import kotlin.collections.ArrayList
 
 class Database {
     private lateinit var database: DatabaseReference
+//    private lateinit var matchesByDate: ArrayList<ArrayList<Game>>
 
-    fun getMatchesByDate(): ArrayList<ArrayList<Game>>{
+    suspend fun getMatchesByDate(): ArrayList<ArrayList<Game>>{
         database = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com/").getReference("Games")
-
+        var matches = ArrayList<Game>()
         val listener = object: ValueEventListener {
+
             override fun onDataChange(p0: DataSnapshot) {
                 val gamesdb = p0.children
                 val games = ArrayList<Game>()
@@ -108,7 +110,7 @@ class Database {
                     val game = Game(homeSet, awaySet, homeScore.toInt(), awayScore.toInt(), date, goals)
                     games.add(game)
                 }
-                mainCode(games)
+                matches = games
             }
 
             override fun onCancelled(p0: DatabaseError) {
@@ -118,7 +120,8 @@ class Database {
 
         }
         //TODO("Learn some form of asyn/await to call the return here")
-
+        database.addValueEventListener(listener)
+        return mainCode(matches)
     }
 
     fun mainCode(matches: ArrayList<Game>): ArrayList<ArrayList<Game>> {
