@@ -144,7 +144,12 @@ class TimerFragment(val home: Set, val away: Set): Fragment() {
                             val current = LocalDateTime.now()
                             println(current)
                             val date = Date.from(current.atZone(ZoneId.systemDefault()).toInstant())
-                            val goal = Goal(winningPlayersRaw[scorer], winningPlayersRaw[assistor], goalCount, whoWonTeamsArray[winningTeam])
+                            val goal = Goal(
+                                winningPlayersRaw[scorer],
+                                winningPlayersRaw[assistor],
+                                goalCount,
+                                if (winningTeam == 0) "home" else "away"
+                            )
                             val goals = arrayListOf<Goal>(goal)
                             val uuid = UUID.randomUUID()
                             println(uuid)

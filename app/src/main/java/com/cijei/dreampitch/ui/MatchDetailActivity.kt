@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import com.cijei.dreampitch.R
+import com.cijei.dreampitch.data.Game
 import com.cijei.dreampitch.mock.MockMatches
 
 class MatchDetailActivity : AppCompatActivity() {
@@ -14,7 +15,8 @@ class MatchDetailActivity : AppCompatActivity() {
 
         val matchDetailTopMenuFragment = MatchDetailTopMenu()
         //TODO("Set the Match onclick")
-        val matchDetailBody = MatchDetails(MockMatches().getMatches(null)[0])
+        val game = intent.extras?.get("game") as Game
+        val matchDetailBody = MatchDetails(game)
 
         val fm: FragmentManager = supportFragmentManager
         fm.beginTransaction().replace(R.id.match_details_top_menu, matchDetailTopMenuFragment).commit()

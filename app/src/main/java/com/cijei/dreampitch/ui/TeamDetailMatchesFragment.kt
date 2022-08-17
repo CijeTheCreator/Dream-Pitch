@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,10 +32,14 @@ class TeamDetailMatchesFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //TODO("Get it from the Games Database, these games must contain the team")
         //TODO("This fragment should accept the clicked team")
+        showProgressBar(view)
         GlobalScope.launch {
             val gamesbyDate = Database().getMatchesByDate()
             withContext(Dispatchers.Main) {
+                hideProgressBar(view)
+                println(gamesbyDate)
                 updateUI(view, gamesbyDate)
+
             }
         }
 
@@ -49,5 +54,13 @@ class TeamDetailMatchesFragment: Fragment() {
         matchesByDateRecyclerView.adapter = adapter
         val layoutManager = LinearLayoutManager(this.context)
         matchesByDateRecyclerView.layoutManager = layoutManager
+    }
+
+    private fun showProgressBar(view: View) {
+        view.findViewById<ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
+    }
+
+    private fun hideProgressBar(view: View) {
+        view.findViewById<ProgressBar>(R.id.progressBar).visibility = View.INVISIBLE
     }
 }

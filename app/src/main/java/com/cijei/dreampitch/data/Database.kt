@@ -1,6 +1,7 @@
 package com.cijei.dreampitch.data
 
 import com.google.firebase.database.*
+import kotlinx.coroutines.*
 import java.time.Instant
 import java.time.LocalDateTime
 import java.util.*
@@ -111,6 +112,8 @@ class Database {
                     games.add(game)
                 }
                 matches = games
+                println(matches)
+
             }
 
             override fun onCancelled(p0: DatabaseError) {
@@ -121,6 +124,9 @@ class Database {
         }
         //TODO("Learn some form of asyn/await to call the return here")
         database.addValueEventListener(listener)
+        runBlocking {
+            delay(1500L)
+        }
         return mainCode(matches)
     }
 

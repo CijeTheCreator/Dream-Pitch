@@ -15,4 +15,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.057" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/matches_by_date_recycler_view"
+        app:layout_constraintEnd_toEndOf="@+id/matches_by_date_recycler_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/matches_by_date_recycler_view" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

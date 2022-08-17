@@ -2,6 +2,7 @@ package com.cijei.dreampitch.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -25,7 +26,10 @@ class MatchesByDateRecyclerViewItemAdapter(val matches: ArrayList<Game>, val con
 
         holder.match.setOnClickListener {
 //            Snackbar.make(it, "To Match Details", Snackbar.LENGTH_SHORT).show()
+            val bundle = Bundle()
+            bundle.putParcelable("game", match)
             val i = Intent(context, MatchDetailActivity::class.java)
+            i.putExtras(bundle)
             context.startActivity(i)
         }
     }
