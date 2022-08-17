@@ -74,6 +74,9 @@ class Database {
                         awayPlayers.add(player)
                     }
 
+                    awaySet.players = awayPlayers
+                    homeSet.players = homePlayers
+
                     val dateDb = gameDb.child("date").child("date").value as Long
                     val dateDbMonth = gameDb.child("date").child("date").value as Long
                     val dateDbYear = gameDb.child("date").child("date").value as Long
@@ -156,4 +159,7 @@ class Database {
 
         return matchesByDate
     }
+
+
 }
+

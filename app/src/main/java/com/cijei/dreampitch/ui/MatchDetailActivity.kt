@@ -13,10 +13,11 @@ class MatchDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_match_details)
 
 
-        val matchDetailTopMenuFragment = MatchDetailTopMenu()
         //TODO("Set the Match onclick")
         val game = intent.extras?.get("game") as Game
         val matchDetailBody = MatchDetails(game)
+        val matchDetailTopMenuFragment = MatchDetailTopMenu(game)
+
 
         val fm: FragmentManager = supportFragmentManager
         fm.beginTransaction().replace(R.id.match_details_top_menu, matchDetailTopMenuFragment).commit()
