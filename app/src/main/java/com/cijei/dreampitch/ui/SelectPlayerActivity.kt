@@ -12,8 +12,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cijei.dreampitch.R
 import com.cijei.dreampitch.adapters.PlayerSearchAdapter
+import com.cijei.dreampitch.data.MatchDay
 import com.cijei.dreampitch.data.Player
 import com.cijei.dreampitch.data.Set
+import com.cijei.dreampitch.data.Stat
 import com.cijei.dreampitch.databinding.SelectPlayerFragmentBinding
 import com.cijei.dreampitch.mock.MockPlayers
 import com.cijei.dreampitch.mock.MockSets
@@ -36,13 +38,13 @@ class SelectPlayerActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var playerDatabase: DatabaseReference
 
-    private lateinit var keyDatabase: DatabaseReference
+    private lateinit var statDatabase: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         database = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com").getReference("Sets")
-        keyDatabase = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com").getReference("MatchDays")
+        statDatabase = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com").getReference("Stats")
 
         playerDatabase = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com").getReference("Players")
 
@@ -98,11 +100,6 @@ class SelectPlayerActivity : AppCompatActivity() {
 
         }
 
-        keyDatabase.child("${date.dayOfMonth} ${date.month} ${date.year}").child("${newSet.teamName} $uuid").push()
-
-
-
-
         return newSet
     }
 
@@ -145,8 +142,10 @@ class SelectPlayerActivity : AppCompatActivity() {
                 player_.position = "MID"
 //                mockPlayers.addPlayer(player_.name,player_.position, player_.club)
                 playerDatabase.child(playerName).setValue(player_)
+                statDatabase.child(playerName).setValue(Stat(0, 0, 0, 0, ArrayList<MatchDay>()))
                 val newPlayerList = players as ArrayList<Player>
                 adapter.setSearchData(newPlayerList)
+
             }
             dialog.create().show()
         }

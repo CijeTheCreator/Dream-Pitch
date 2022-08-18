@@ -19,8 +19,7 @@ import com.cijei.dreampitch.hood.MinuteCountDown
 import com.cijei.dreampitch.hood.SecondCountDown
 import com.cijei.dreampitch.mock.MockPlayers
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import java.time.LocalDateTime
 import java.time.MonthDay.now
 import java.time.ZoneId
@@ -43,6 +42,8 @@ class TimerFragment(val home: Set, val away: Set): Fragment() {
     private var scorer: Int = 300
 
     private lateinit var database: DatabaseReference
+    private lateinit var statDatabase: DatabaseReference
+    private var count = 0
 
 
     override fun onCreateView(
@@ -56,6 +57,7 @@ class TimerFragment(val home: Set, val away: Set): Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         startCountDown(view, countdownduration)
         database = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com/").getReference("Games")
+        statDatabase = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com/").getReference("Stats")
     }
 
     private fun startCountDown(view: View, minutes: Long, secondsCount: Int = 0, minutesCount: Int = 0) {
@@ -168,6 +170,54 @@ class TimerFragment(val home: Set, val away: Set): Fragment() {
                                 Snackbar.make(view.findViewById(R.id.stop_button), "Something went wrong", Snackbar.LENGTH_SHORT).show()
 
                             }
+
+                            //Update Stats
+                            val statListener = object: ValueEventListener {
+                                override fun onDataChange(p0: DataSnapshot) {
+                                    val goals_ = p0.child("goals").value as Long
+                                    val newGoals = goals_ + 1
+                                    statDatabase.child(winningPlayersRaw[scorer].name).child("goals").setValue(newGoals)
+                                }
+
+                                override fun onCancelled(p0: DatabaseError) {
+                                    TODO("Not yet implemented")
+                                }
+
+                            }
+//                            val statListenerAssists = object: ValueEventListener {
+//                                override fun onDataChange(p0: DataSnapshot) {
+//                                    val assists = p0.child("assists").value as Long
+//                                    val newAssists = assists + 1
+//                                    statDatabase.child(winningPlayersRaw[assistor].name).child("assists").setValue(newAssists)
+//                                }
+//
+//                                override fun onCancelled(p0: DatabaseError) {
+//                                    TODO("Not yet implemented")
+//                                }
+//
+//                            }
+                            val statListenerWinsUpdate = object: ValueEventListener {
+                                override fun onDataChange(p0: DataSnapshot) {
+                                    val wins = p0.child("wins").value as Long
+                                    val newWins = wins + 1
+                                    statDatabase.child(winningPlayers[count]).child("wins").setValue(newWins)
+                                }
+
+                                override fun onCancelled(p0: DatabaseError) {
+                                    TODO("Not yet implemented")
+                                }
+
+                            }
+
+                            statDatabase.child(winningPlayersRaw[scorer].name).addListenerForSingleValueEvent(statListener)
+//                            statDatabase.child(winningPlayersRaw[assistor].name).addListenerForSingleValueEvent(statListenerAssists)
+
+                            for (player in winningPlayers) {
+                                statDatabase.child(player).addListenerForSingleValueEvent(statListenerWinsUpdate)
+                                if (count >= 4) break
+                                count++
+                            }
+
 
 
                         }.show()
