@@ -38,9 +38,10 @@ class PlayerDetailsActivity() : AppCompatActivity() {
             val goals = p0.child("goals").value as Long
             val wins = p0.child("wins").value as Long
             val losses = p0.child("losses").value as Long
+            val assists = p0.child("assists").value as Long
 
             //TODO("Matchday")
-            val stat = Stat(appearances.toInt(), goals.toInt(), wins.toInt(), losses.toInt(), ArrayList())
+            val stat = Stat(appearances.toInt(), goals.toInt(), wins.toInt(), losses.toInt(), assists.toInt(),ArrayList())
             mainCode(player, stat)
         }
 

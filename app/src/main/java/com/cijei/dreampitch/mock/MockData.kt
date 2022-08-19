@@ -225,7 +225,7 @@ class MockStats() {
             matchDays.add(matchDay)
         }
 
-        val stat = Stat(appearances, goals, wins, losses, matchDays)
+        val stat = Stat(appearances, goals, wins, losses, 0, matchDays)
         return stat
     }
 }

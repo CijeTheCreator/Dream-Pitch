@@ -142,7 +142,7 @@ class SelectPlayerActivity : AppCompatActivity() {
                 player_.position = "MID"
 //                mockPlayers.addPlayer(player_.name,player_.position, player_.club)
                 playerDatabase.child(playerName).setValue(player_)
-                statDatabase.child(playerName).setValue(Stat(0, 0, 0, 0, ArrayList<MatchDay>()))
+                statDatabase.child(playerName).setValue(Stat(0, 0, 0, 0, 0, ArrayList<MatchDay>()))
                 val newPlayerList = players as ArrayList<Player>
                 adapter.setSearchData(newPlayerList)
 
