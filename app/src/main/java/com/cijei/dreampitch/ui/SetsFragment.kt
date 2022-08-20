@@ -22,6 +22,7 @@ import com.cijei.dreampitch.mock.MockMatches
 import com.cijei.dreampitch.mock.MockSets
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.*
+import java.time.LocalDateTime
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -43,7 +44,8 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        database = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com/").getReference("Sets")
+        val date = LocalDateTime.now()
+        database = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com/").getReference("Sets").child("${date.year} ${date.month} ${date.dayOfMonth}")
 
 
         setsFromDatabase = ArrayList<Set>()
@@ -119,7 +121,7 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
 
 
 
-        adapter = SetsAdapter(sets, this.requireContext())
+        adapter = SetsAdapter(sets, requireContext())
         val layoutManager = LinearLayoutManager(this.context)
         val recyclerView = view.findViewById<RecyclerView>(R.id.setsRecyclerView)
 

@@ -84,7 +84,7 @@ class SelectPlayerActivity : AppCompatActivity() {
 
     private fun createSet(selectedPlayers: ArrayList<Player>, view: View): Set {
         val newSet = Set()
-        val uuid = UUID.randomUUID()
+//        val uuid = UUID.randomUUID()
         newSet.teamName = "Team ${selectedPlayers[0].name}"
         newSet.wins = 0
         newSet.loss = 0
@@ -93,7 +93,7 @@ class SelectPlayerActivity : AppCompatActivity() {
         val date = LocalDateTime.now()
 
 
-        database.child("${newSet.teamName} $uuid").setValue(newSet).addOnSuccessListener {
+        database.child("${date.year} ${date.month} ${date.dayOfMonth}").child(newSet.teamName).setValue(newSet).addOnSuccessListener {
             Snackbar.make(view, "${newSet.teamName} created successfully", Snackbar.LENGTH_SHORT).show()
         }.addOnFailureListener {
             Snackbar.make(view, "Creation failed", Snackbar.LENGTH_SHORT).show()

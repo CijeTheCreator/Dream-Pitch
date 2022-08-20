@@ -41,6 +41,7 @@ class TimerFragment(val home: Set, val away: Set): Fragment() {
 
     private lateinit var database: DatabaseReference
     private lateinit var statDatabase: DatabaseReference
+    private lateinit var setDatabaseReference: DatabaseReference
     private var count = 0
 
 
@@ -56,6 +57,7 @@ class TimerFragment(val home: Set, val away: Set): Fragment() {
         startCountDown(view, countdownduration)
         database = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com/").getReference("Games")
         statDatabase = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com/").getReference("Stats")
+        setDatabaseReference = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com/").getReference("Sets")
     }
 
     private fun startCountDown(view: View, minutes: Long, secondsCount: Int = 0, minutesCount: Int = 0) {
@@ -163,6 +165,7 @@ class TimerFragment(val home: Set, val away: Set): Fragment() {
                             val uuid = UUID.randomUUID()
                             val game = Game(home, away, homeScore, awayScore, date, goals)
 
+                            val matchday = "${date.year} ${date.month} ${date.day}"
                             //Database Calls
                             //Game Database call
                             database.child("${home.teamName} vs ${away.teamName} $uuid").setValue(game).addOnSuccessListener {
@@ -192,6 +195,11 @@ class TimerFragment(val home: Set, val away: Set): Fragment() {
                             for (i in away.players.indices) {
                                 statDatabase.child(away.players[i].name).addListenerForSingleValueEvent(statAppearanceUpdater(away.players, i))
                             }
+                            //Set Win
+                            val date_ = LocalDateTime.now()
+                            setDatabaseReference.child("${date_.year} ${date_.month} ${date_.dayOfMonth}").child(teams[winningTeam].teamName).addListenerForSingleValueEvent(setWinUpdater("${date_.year} ${date_.month} ${date_.dayOfMonth}", teams[winningTeam]))
+                            //Set Loss
+                            setDatabaseReference.child("${date_.year} ${date_.month} ${date_.dayOfMonth}").child(teams[losingTeam].teamName).addListenerForSingleValueEvent(setLossUpdater("${date_.year} ${date_.month} ${date_.dayOfMonth}", teams[losingTeam]))
 
 
                         }.show()
@@ -344,5 +352,39 @@ class TimerFragment(val home: Set, val away: Set): Fragment() {
 
         }
         return appearanceListener
+    }
+
+    fun setWinUpdater(date: String, team: Set): ValueEventListener {
+        val setWinUpdater = object: ValueEventListener {
+            override fun onDataChange(p0: DataSnapshot) {
+                val wins = p0.child("wins").value as Long
+                val newWins = wins + 1
+                setDatabaseReference.child(date).child(team.teamName).child("wins").setValue(newWins)
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        }
+
+        return setWinUpdater
+    }
+
+    fun setLossUpdater(date: String, team: Set): ValueEventListener {
+        val setLossUpdater = object: ValueEventListener {
+            override fun onDataChange(p0: DataSnapshot) {
+                val losses = p0.child("loss").value as Long
+                val newLosses = losses + 1
+                setDatabaseReference.child(date).child(team.teamName).child("wins").setValue(newLosses)
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        }
+
+        return setLossUpdater
     }
 }
