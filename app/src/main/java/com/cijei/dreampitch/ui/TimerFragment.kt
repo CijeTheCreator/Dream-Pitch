@@ -376,7 +376,7 @@ class TimerFragment(val home: Set, val away: Set): Fragment() {
             override fun onDataChange(p0: DataSnapshot) {
                 val losses = p0.child("loss").value as Long
                 val newLosses = losses + 1
-                setDatabaseReference.child(date).child(team.teamName).child("wins").setValue(newLosses)
+                setDatabaseReference.child(date).child(team.teamName).child("loss").setValue(newLosses)
             }
 
             override fun onCancelled(p0: DatabaseError) {

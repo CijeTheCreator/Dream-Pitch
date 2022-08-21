@@ -40,3 +40,9 @@ Add mavenCentral()
 
 At allRepositiories > add mavenCentral() under google
  */
+
+//Fragment not attached to context
+/*
+We are doing too much on the activity that when the activity is created, the context isn't available yet.
+The code on medium "https://weidianhuang.medium.com/android-fragment-not-attached-to-a-context-24d00fac4f3d" fixed the problem
+ */

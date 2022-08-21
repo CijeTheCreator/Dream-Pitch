@@ -1,6 +1,7 @@
 package com.cijei.dreampitch.ui
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -44,72 +45,73 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val date = LocalDateTime.now()
-        database = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com/").getReference("Sets").child("${date.year} ${date.month} ${date.dayOfMonth}")
+
+        checkIfFragmentAttached {
+            val date = LocalDateTime.now()
+            database = FirebaseDatabase.getInstance("https://dream-pitch-default-rtdb.firebaseio.com/").getReference("Sets").child("${date.year} ${date.month} ${date.dayOfMonth}")
 
 
-        setsFromDatabase = ArrayList<Set>()
-        //TODO("Get these sets from the set database")
+            setsFromDatabase = ArrayList<Set>()
+            //TODO("Get these sets from the set database")
 
 
-        val listener = object : ValueEventListener {
-            override fun onDataChange(p0: DataSnapshot) {
-                for (postSnapshot in p0.children) {
-                    val set = Set()
-                    val draws = postSnapshot.child("draws").value as Long
-                    val loss = postSnapshot.child("loss").value as Long
-                    val wins = postSnapshot.child("wins").value as Long
-                    val teamName = postSnapshot.child("teamName").value as String
+            val listener = object : ValueEventListener {
+                override fun onDataChange(p0: DataSnapshot) {
+                    for (postSnapshot in p0.children) {
+                        val set = Set()
+                        val draws = postSnapshot.child("draws").value as Long
+                        val loss = postSnapshot.child("loss").value as Long
+                        val wins = postSnapshot.child("wins").value as Long
+                        val teamName = postSnapshot.child("teamName").value as String
 
-                    val players = postSnapshot.child("players").children
-                    val playerxs = ArrayList<Player>()
-                     for (player in players) {
-                         val playerx = Player()
-                         val playerName = player.child("name").value as String
-                         val playerClub = player.child("club").value as String
-                         val playerPosition = player.child("position").value as String
+                        val players = postSnapshot.child("players").children
+                        val playerxs = ArrayList<Player>()
+                        for (player in players) {
+                            val playerx = Player()
+                            val playerName = player.child("name").value as String
+                            val playerClub = player.child("club").value as String
+                            val playerPosition = player.child("position").value as String
 
-                         playerx.name = playerName
-                         playerx.club = playerClub
-                         playerx.position = playerPosition
+                            playerx.name = playerName
+                            playerx.club = playerClub
+                            playerx.position = playerPosition
 
-                         playerxs.add(playerx)
-                     }
+                            playerxs.add(playerx)
+                        }
 
-                    set.teamName = teamName
-                    set.wins = wins.toInt()
-                    set.loss = loss.toInt()
-                    set.draws = draws.toInt()
-                    set.players = playerxs
+                        set.teamName = teamName
+                        set.wins = wins.toInt()
+                        set.loss = loss.toInt()
+                        set.draws = draws.toInt()
+                        set.players = playerxs
 
-                    setsFromDatabase.add(set)
+                        setsFromDatabase.add(set)
+                    }
+
+                    println(setsFromDatabase.map {
+                        it.players.map {
+                            it.name
+                        }
+                    })
+                    view.findViewById<ProgressBar>(R.id.setLoaderProgressBar).visibility = View.INVISIBLE
+                    mainCode(view, setsFromDatabase, this@checkIfFragmentAttached)
                 }
 
-                println(setsFromDatabase.map {
-                    it.players.map {
-                        it.name
-                    }
-                })
-                view.findViewById<ProgressBar>(R.id.setLoaderProgressBar).visibility = View.INVISIBLE
-                mainCode(view, setsFromDatabase)
+
+                override fun onCancelled(p0: DatabaseError) {
+                    Snackbar.make(view.findViewById(R.id.remove_sets_button), p0.message, Snackbar.LENGTH_SHORT).show()
+                }
+
+
             }
 
 
-            override fun onCancelled(p0: DatabaseError) {
-                Snackbar.make(view.findViewById(R.id.remove_sets_button), p0.message, Snackbar.LENGTH_SHORT).show()
-            }
-
-
+            database.addValueEventListener(listener)
         }
-
-
-        database.addValueEventListener(listener)
-
-
-
     }
 
-    private fun mainCode(view: View, setiz: ArrayList<Set>) {
+
+    private fun mainCode(view: View, setiz: ArrayList<Set>, context: Context) {
 //        val setsHandler = MockSets()
         sets = setiz
 
@@ -121,7 +123,7 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
 
 
 
-        adapter = SetsAdapter(sets, requireContext())
+        adapter = SetsAdapter(sets, context)
         val layoutManager = LinearLayoutManager(this.context)
         val recyclerView = view.findViewById<RecyclerView>(R.id.setsRecyclerView)
 
@@ -208,6 +210,12 @@ class SetsFragment(private var setz: ArrayList<Set>?): Fragment() {
                 fm?.beginTransaction()?.replace(R.id.timer_fragment, timerFragment)?.commit()
             }
             builder.show()
+        }
+    }
+
+    fun checkIfFragmentAttached(operation: Context.() -> Unit) {
+        if (isAdded && context != null) {
+            operation(requireContext())
         }
     }
 }
