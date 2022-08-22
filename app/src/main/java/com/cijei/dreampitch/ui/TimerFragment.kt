@@ -10,9 +10,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.cijei.dreampitch.R
-import com.cijei.dreampitch.data.Game
-import com.cijei.dreampitch.data.Goal
-import com.cijei.dreampitch.data.Player
+import com.cijei.dreampitch.data.*
 import com.cijei.dreampitch.data.Set
 import com.cijei.dreampitch.hood.MinuteCountDown
 import com.cijei.dreampitch.hood.SecondCountDown
@@ -200,6 +198,10 @@ class TimerFragment(val home: Set, val away: Set): Fragment() {
                             setDatabaseReference.child("${date_.year} ${date_.month} ${date_.dayOfMonth}").child(teams[winningTeam].teamName).addListenerForSingleValueEvent(setWinUpdater("${date_.year} ${date_.month} ${date_.dayOfMonth}", teams[winningTeam]))
                             //Set Loss
                             setDatabaseReference.child("${date_.year} ${date_.month} ${date_.dayOfMonth}").child(teams[losingTeam].teamName).addListenerForSingleValueEvent(setLossUpdater("${date_.year} ${date_.month} ${date_.dayOfMonth}", teams[losingTeam]))
+
+
+                            //Set Matchday Appearances, Losses and Wins
+                            statDatabase.child(winningPlayersRaw[scorer].name).child("MatchDays").setValue(MatchDay(home, Date(), 1, 2))
 
 
                         }.show()

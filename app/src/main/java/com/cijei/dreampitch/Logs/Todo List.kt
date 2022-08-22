@@ -153,3 +153,11 @@ Day 1
 /*
 Apply coroutines to the dream pitch code little little
  */
+
+//22:08:2022
+/*
+This match day stat; How to go about it?
+The sets fragment already has dates, wins and loss - with that appearances can be deduced for each player
+What can't be deduced is the goals and assists for that particular matchday
+Add those ones after getting the wins, loss and date
+ */

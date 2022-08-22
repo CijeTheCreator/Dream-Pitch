@@ -221,7 +221,7 @@ class MockStats() {
             val gs = Random.nextInt(0, apps)
             val ass = Random.nextInt(0, apps)
             val set = MockSets().getSets()[Random.nextInt(0, 3)]
-            val matchDay = MatchDay(set, date, apps, gs, ass)
+            val matchDay = MatchDay(set, date, apps, gs)
             matchDays.add(matchDay)
         }
 
