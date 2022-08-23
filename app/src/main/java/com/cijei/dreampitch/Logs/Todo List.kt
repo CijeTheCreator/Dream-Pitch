@@ -161,3 +161,8 @@ The sets fragment already has dates, wins and loss - with that appearances can b
 What can't be deduced is the goals and assists for that particular matchday
 Add those ones after getting the wins, loss and date
  */
+
+//23:08:2022
+/*
+Project now the mess up, study live data today
+ */
