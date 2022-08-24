@@ -166,3 +166,8 @@ Add those ones after getting the wins, loss and date
 /*
 Project now the mess up, study live data today
  */
+
+//24:08:2022
+/*
+fix found-ish, implementation will need internet which I do not have, follow mummy to the library today
+ */
