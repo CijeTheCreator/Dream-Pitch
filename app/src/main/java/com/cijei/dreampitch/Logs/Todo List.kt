@@ -171,3 +171,8 @@ Project now the mess up, study live data today
 /*
 fix found-ish, implementation will need internet which I do not have, follow mummy to the library today
  */
+
+//25:08"2022
+/*
+Sick day
+ */
