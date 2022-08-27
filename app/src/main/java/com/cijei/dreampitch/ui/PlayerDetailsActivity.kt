@@ -8,11 +8,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cijei.dreampitch.R
 import com.cijei.dreampitch.adapters.CareerStatsAdapter
+import com.cijei.dreampitch.data.MatchDay
 import com.cijei.dreampitch.data.Player
+import com.cijei.dreampitch.data.Set
 import com.cijei.dreampitch.data.Stat
 import com.cijei.dreampitch.mock.MockPlayers
 import com.cijei.dreampitch.mock.MockStats
 import com.google.firebase.database.*
+import java.time.LocalDateTime
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.random.Random
 
 class PlayerDetailsActivity() : AppCompatActivity() {
@@ -34,6 +39,7 @@ class PlayerDetailsActivity() : AppCompatActivity() {
 
     val statListener = object: ValueEventListener {
         override fun onDataChange(p0: DataSnapshot) {
+            val date = LocalDateTime.now()
             val appearances = p0.child("appearances").value as Long
             val goals = p0.child("goals").value as Long
             val wins = p0.child("wins").value as Long
@@ -41,7 +47,44 @@ class PlayerDetailsActivity() : AppCompatActivity() {
             val assists = p0.child("assists").value as Long
 
             //TODO("Matchday")
-            val stat = Stat(appearances.toInt(), goals.toInt(), wins.toInt(), losses.toInt(), assists.toInt(),ArrayList())
+            val matchDays = ArrayList<MatchDay>()
+            for (matchday in p0.child("MatchDays").children) {
+                println(matchday.value)
+                val players_ = matchday.child("set").child("players").children
+                val players = ArrayList<Player>()
+                for (player_ in players_) {
+                    val player = Player()
+                    player.name = player_.child("name").value as String
+                    player.club = player_.child("club").value as String
+                    player.position = player_.child("position").value as String
+                    players.add(player)
+                }
+
+                val setWins = matchday.child("set").child("wins").value as Long
+                val setLoss = matchday.child("set").child("loss").value as Long
+                val setDraws = matchday.child("set").child("draws").value as Long
+
+                val iGoals = matchday.child("goals").value as Long
+                val iAssists = matchday.child("assists").value as Long
+
+                val set = Set()
+                set.players = players
+                set.teamName = matchday.child("set").child("teamName").value as String
+                set.loss = setLoss.toInt()
+                set.wins = setWins.toInt()
+                set.draws = setWins.toInt()
+
+                val day = matchday.child("date").child("date").value as Long
+                val month = matchday.child("date").child("month").value as Long
+                val year = matchday.child("date").child("year").value as Long
+
+                val date = Date(day.toInt(), month.toInt(), year.toInt())
+
+                val matchDay = MatchDay(set, date, iGoals.toInt(), iAssists.toInt())
+                matchDays.add(matchDay)
+            }
+
+            val stat = Stat(appearances.toInt(), goals.toInt(), wins.toInt(), losses.toInt(), assists.toInt(),matchDays)
             mainCode(player, stat)
         }
 

@@ -177,6 +177,10 @@ class TimerFragment(val home: Set, val away: Set): Fragment() {
                             statDatabase.child(winningPlayersRaw[scorer].name).addListenerForSingleValueEvent(goalListener(winningPlayersRaw))
                             //Player Assist
                             statDatabase.child(winningPlayersRaw[assistor].name).addListenerForSingleValueEvent(assistListener(winningPlayersRaw))
+                            //Player Matchday Goal
+                            statDatabase.child(winningPlayersRaw[scorer].name).addListenerForSingleValueEvent(matchDayGoalListener(winningPlayersRaw))
+                            //Player Matchday Assist
+                            statDatabase.child(winningPlayersRaw[assistor].name).addListenerForSingleValueEvent(matchDayAssistListener(winningPlayersRaw))
                             //Player Win
                             for (i in winningPlayers.indices) {
                                 statDatabase.child(winningPlayers[i]).addListenerForSingleValueEvent(statWinUpdater(winningPlayers, i))
@@ -388,5 +392,37 @@ class TimerFragment(val home: Set, val away: Set): Fragment() {
         }
 
         return setLossUpdater
+    }
+
+    fun matchDayGoalListener(players: ArrayList<Player>): ValueEventListener {
+        val matchDayGoalListener = object: ValueEventListener {
+            override fun onDataChange(p0: DataSnapshot) {
+                val goals = p0.child("MatchDays").child("goals").value as Long
+                val newGoals = goals + 1
+                statDatabase.child(players[scorer].name).child("MatchDays").child("goals").setValue(newGoals)
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        }
+        return matchDayGoalListener
+    }
+
+    fun matchDayAssistListener(players: ArrayList<Player>): ValueEventListener {
+        val matchDayAssistListener = object: ValueEventListener {
+            override fun onDataChange(p0: DataSnapshot) {
+                val assists = p0.child("MatchDays").child("assists").value as Long
+                val newAssists = assists + 1
+                statDatabase.child(players[assistor].name).child("MatchDays").child("assists").setValue(newAssists)
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        }
+        return matchDayAssistListener
     }
 }

@@ -97,7 +97,10 @@ class SelectPlayerActivity : AppCompatActivity() {
             Snackbar.make(view, "${newSet.teamName} created successfully", Snackbar.LENGTH_SHORT).show()
         }.addOnFailureListener {
             Snackbar.make(view, "Creation failed", Snackbar.LENGTH_SHORT).show()
+        }
 
+        for (player in newSet.players) {
+            statDatabase.child(player.name).child("MatchDays").child("${date.year} ${date.month} ${date.dayOfMonth}").setValue(MatchDay(newSet, Date(), 0, 0))
         }
 
         return newSet

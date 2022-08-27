@@ -181,3 +181,11 @@ Sick day
 /*
 Sick day 2
  */
+
+//27th
+/*
+Sick day 3 but we are back, code the match day features
+
+The matdchdays should be separate an unique for each of the days, so the same thing done to log goals into particular matchdays should be done here too
+When should the matchday be created?, when the set is made
+ */
