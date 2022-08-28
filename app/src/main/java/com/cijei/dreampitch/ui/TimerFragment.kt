@@ -204,10 +204,6 @@ class TimerFragment(val home: Set, val away: Set): Fragment() {
                             setDatabaseReference.child("${date_.year} ${date_.month} ${date_.dayOfMonth}").child(teams[losingTeam].teamName).addListenerForSingleValueEvent(setLossUpdater("${date_.year} ${date_.month} ${date_.dayOfMonth}", teams[losingTeam]))
 
 
-                            //Set Matchday Appearances, Losses and Wins
-                            statDatabase.child(winningPlayersRaw[scorer].name).child("MatchDays").setValue(MatchDay(home, Date(), 1, 2))
-
-
                         }.show()
 
                     }.show()
